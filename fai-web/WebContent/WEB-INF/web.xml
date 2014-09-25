@@ -11,6 +11,7 @@
 		<welcome-file>default.html</welcome-file>
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>FormLogin.htlm</welcome-file>		
 	</welcome-file-list>
 
 	<!-- Define os arquivos de configuracoes XML para o contexto Spring -->
@@ -57,5 +58,9 @@
 		<url-pattern>/SalvarUsuario</url-pattern><!--usuario-->
 	</servlet-mapping>
 
+    <servlet-mapping>
+		<servlet-name>ServletFai</servlet-name>
+		<url-pattern>/LogarUsuario</url-pattern><!--usuario-->
+	</servlet-mapping>
 
 </web-app>
