@@ -2,32 +2,36 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Cadastro Usuário</title>
 </head>
 <body>
 
 <form action="SalvarUsuario" method="post" />
-	<h2>Banco - Cadastro de Cliente</h2>
+	<h3>Banco - Cadastro de Usuário</h3>
 	<label>Nome:</label>
-	<input type="text" id="txtNome" name="txtNome"/></BR>
+	<input type="text" id="txtNome" name="txtNome"/></br>
 	<label>CPF:</label>
-	<input type="text" id="txtCpf" name="txtCpf"/></BR>
+	<input type="text" id="txtCpf" name="txtCpf"/></br>
 	<label>Salario:</label>
-	<input type="text" id="txtSalario" name="txtSalario"/></BR>
+	<input type="text" id="txtSalario" name="txtSalario"/></br>
 	<label>Limite de Credito:</label>
-	<input type="text" id="txtLimCredito" name="txtLimCredito"/></BR>
+	<input type="text" id="txtLimCredito" name="txtLimCredito"/></br>
 	<label>Conta:</label>
-	<input type="text" id="txtConta" name="txtConta"/></BR>
-	<label>Agencia:</label>
-	<input type="text" id="txtAgencia" name="txtAgencia"/></BR>
+	<input type="text" id="txtConta" name="txtConta"/></br>
+	<label>Agência:</label>
+	<input type="text" id="txtAgencia" name="txtAgencia"/></br>
 	<label>Senha:</label>
-	<input type="text" id="txtSenha" name="txtSenha"/></BR>
+	<input type="text" id="txtSenha" name="txtSenha"/></br>
 	<label>Saldo:</label>
-	<input type="text" id="txtSaldo" name="txtSaldo"/></BR>
-	<label>Tipo Cliente:</label>
-	<input type="text" id="txtTpCliente" name="txtTpCliente"/></BR>
+	<input type="text" id="txtSaldo" name="txtSaldo"/></br>
+	<label>Tipo Usuário:</label>
+	<select id="txtTpCliente" name="txtTpCliente">
+		<option value ="Cliente">Cliente</option>
+		<option value ="Func.">Func.</option>
+	</select></br></br>
 	
-	<input type="submit" id="command" name="command" value="Salvar" />
+	<input type="submit" id="command" name="command" value="Salvar"/>
+
 </form>
 
 </body>

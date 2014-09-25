@@ -52,7 +52,7 @@
 		<url-pattern>/SalvarCategoria</url-pattern>
 	</servlet-mapping>
 	
-		<servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>ServletFai</servlet-name>
 		<url-pattern>/SalvarUsuario</url-pattern><!--usuario-->
 	</servlet-mapping>

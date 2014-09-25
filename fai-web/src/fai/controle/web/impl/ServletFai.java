@@ -32,7 +32,7 @@ public class ServletFai extends HttpServlet {
 			throws ServletException, IOException {
 		super.service(arg0, response);
 		// carregarDominios(getServletContext());
-		// response.sendRedirect("FormCliente.jsp");
+		 response.sendRedirect("FormListarUsuario.html");
 	}
 
 	/*
@@ -88,7 +88,7 @@ public class ServletFai extends HttpServlet {
 		processRequest(request, response);
 	}
 	
-private ICommandFrontController<EntidadeDominio> getCommand(String command){
+	private ICommandFrontController<EntidadeDominio> getCommand(String command){
 		
 		return commandsFC.get("commandFrontController"+command);
 		
