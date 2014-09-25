@@ -28,7 +28,7 @@
 		key-type="java.lang.String" value-type="fai.controle.web.command.ICommandFrontController">
 
 		<entry key="commandFrontControllerSalvar" value-ref="commandFrontControllerSalvar" />
-
+		<entry key="commandFrontControllerLogar" value-ref="commandFrontControllerLogar" />		
 	</util:map>
 	
 	<util:map id="vhs" map-class="java.util.HashMap"
@@ -38,6 +38,7 @@
 		<entry key="/fai-web/SalvarCliente" value-ref="salvarClienteVHWeb" />
 		<entry key="/fai-web/SalvarCategoria" value-ref="salvarCategoriaVHWeb" />
 		<entry key="/fai-web/SalvarUsuario" value-ref="salvarUsuarioVHWeb" /><!--usuario-->
+		<entry key="/fai-web/LogarUsuario" value-ref="logarUsuarioVHWeb" /><!--logar-->		
 
 	</util:map>
 
@@ -55,6 +56,11 @@
 		class="fai.controle.web.vh.SalvarUsuarioVHWeb">
 		<property name="usuario" ref="usuario"/>
 	</bean>
+	<!--usuario-->
+	<bean id="logarUsuarioVHWeb"
+		class="fai.controle.web.vh.LogarUsuarioVHWeb">
+		<property name="usuario" ref="usuario"/>
+	</bean>	
 	
 	<bean id="salvarClienteVHWeb"
 		class="fai.controle.web.vh.SalvarClienteVHWeb">
@@ -70,6 +76,10 @@
 		class="fai.controle.web.command.impl.CommandFrontControllerSalvar">
 		<property name="fachada" ref="fachada" />
 	</bean>
+	<bean id="commandFrontControllerLogar"
+		class="fai.controle.web.command.impl.CommandFrontControllerLogar">
+		<property name="fachada" ref="fachada" />
+	</bean>	
 	
 	<bean id="factoryMethodVH"
 		class="fai.controle.web.vh.FactoryMethodVH">

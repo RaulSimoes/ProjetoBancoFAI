@@ -7,5 +7,8 @@
         <dependent-module archiveName="postgresql-9.3-1102.jdbc41.jar" deploy-path="/" handle="module:/classpath/lib/C:/Users/jadson/EclipseLuna/workspace/ProjetoFAI/JARS/postgresql-9.3-1102.jdbc41.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="postgresql-9.3-1102.jdbc41.jar" deploy-path="/" handle="module:/classpath/lib/C:/Users/Raul/workspace/ProjetoBancoFAI/JARS/postgresql-9.3-1102.jdbc41.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
