@@ -6,23 +6,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fai.domain.Categoria;
 import fai.domain.EntidadeDominio;
 import fai.domain.Resultado;
 import fai.domain.Usuario;
 
-public class LogarUsuarioVHWeb <C extends Usuario> implements IViewHelperWeb<C> {
+public class LogarUsuarioVHWeb <U extends Usuario> implements IViewHelperWeb<U> {
 	private Usuario usuario;
 	@Override
 	public EntidadeDominio getEntidade(HttpServletRequest request)
 			throws ServletException, IOException {
+		
 		String agencia = request.getParameter("txtAgencia");
 		String conta = request.getParameter("txtConta");
 		String senha = request.getParameter("txtSenha");		
 		
 		usuario.setAgencia(agencia);
-		usuario.setAgencia(conta);
-		usuario.setAgencia(senha);			
+		usuario.setConta(conta);
+		usuario.setSenha(senha);			
 		
 		return usuario;
 	}
@@ -34,7 +34,7 @@ public class LogarUsuarioVHWeb <C extends Usuario> implements IViewHelperWeb<C> 
 	}
 
 	@Override
-	public void setEntidade(C entidade) {
+	public void setEntidade(U entidade) {
 		this.usuario = entidade;		
 	}
 	

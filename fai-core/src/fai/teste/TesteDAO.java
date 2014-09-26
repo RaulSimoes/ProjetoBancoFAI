@@ -6,8 +6,10 @@ import java.util.List;
 import fai.dao.IDAO;
 import fai.dao.jpa.impl.CategoriaJpaDAO;
 import fai.dao.jpa.impl.ProdutoJpaDAO;
+import fai.dao.jpa.impl.UsuarioJpaDAO;
 import fai.domain.Categoria;
 import fai.domain.Produto;
+import fai.domain.Usuario;
 
 
 
@@ -35,7 +37,7 @@ public class TesteDAO {
 		prd.setId(4);
 		dao.excluir(prd);*/
 		
-		IDAO<Produto> dao = new ProdutoJpaDAO<Produto>();
+		/*IDAO<Produto> dao = new ProdutoJpaDAO<Produto>();
 		Categoria c = new Categoria();
 		c.setId(1);
 		Produto prd = new Produto();
@@ -51,7 +53,18 @@ public class TesteDAO {
 		List<Categoria> categorias = daoCat.consultar(new Categoria());
 		for(Categoria cat: categorias){
 			System.out.println(cat.getDescricao());
-		}
+		}*/
+		
+		IDAO<Usuario> daoUsu = new UsuarioJpaDAO<Usuario>();
+		Usuario usuario1 = new Usuario();
+		usuario1.setAgencia("fsdfsda");
+		daoUsu.salvar(usuario1);
+		List<Usuario> usuarios = daoUsu.consultar(new Usuario());
+		for(Usuario usu: usuarios){
+			System.out.println(usu.getAgencia());
+			System.out.println(usu.getConta());
+			System.out.println(usu.getSenha());			
+		}		
 	}
 
 }

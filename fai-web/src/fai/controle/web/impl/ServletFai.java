@@ -32,7 +32,7 @@ public class ServletFai extends HttpServlet {
 			throws ServletException, IOException {
 		super.service(arg0, response);
 		// carregarDominios(getServletContext());
-		 response.sendRedirect("FormListarUsuario.html");
+		 //response.sendRedirect("FormListarUsuario.html");
 	}
 
 	/*
