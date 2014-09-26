@@ -14,9 +14,7 @@ public class CommandFrontControllerSalvar<E> implements ICommandFrontController<
 	
 	@Override
 	public Resultado<EntidadeDominio> execute(EntidadeDominio entidade) {
-		Resultado<EntidadeDominio> r;
-		r = fachada.salvar(entidade);
-        return r;					
+		return fachada.salvar(entidade);        					
 	}
 
 	public void setFachada(IFachada fachada) {
