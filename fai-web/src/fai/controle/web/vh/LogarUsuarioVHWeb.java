@@ -30,7 +30,14 @@ public class LogarUsuarioVHWeb <U extends Usuario> implements IViewHelperWeb<U> 
 	@Override
 	public void setView(Resultado rs, HttpServletRequest rq,
 			HttpServletResponse rp) throws ServletException, IOException {
-		// TODO Auto-generated method stub		
+		if(rs.getEntidades().size() > 0){
+			//rq.setAttribute("cli", cliente);
+			rq.getRequestDispatcher("FormUsuario.html").
+				forward(rq, rp);
+		}else{
+			rq.getRequestDispatcher("FormLogin.html").
+			forward(rq, rp);			
+		}
 	}
 
 	@Override

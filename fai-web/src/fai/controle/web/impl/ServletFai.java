@@ -16,6 +16,7 @@ import fai.controle.web.command.ICommandFrontController;
 import fai.controle.web.vh.FactoryMethodVH;
 import fai.controle.web.vh.IViewHelperWeb;
 import fai.domain.EntidadeDominio;
+import fai.domain.Resultado;
 
 public class ServletFai extends HttpServlet {
 
@@ -62,6 +63,7 @@ public class ServletFai extends HttpServlet {
 			throws ServletException, IOException {
 		String uri = request.getRequestURI();
 		String command = request.getParameter("command");
+		Resultado<EntidadeDominio> resultado;
 		
 		
 		IViewHelperWeb vh = FactoryMethodVH.create(uri); 
@@ -70,8 +72,9 @@ public class ServletFai extends HttpServlet {
 
 		ICommandFrontController<EntidadeDominio> cfc = getCommand(command);
 		
-		cfc.execute(entidade);
-
+		resultado = cfc.execute(entidade);
+		
+		vh.setView(resultado, request,response);
 		/*
 		 * vh.setEntidade(entidade); // vh.setView(resultado, request,
 		 * response);

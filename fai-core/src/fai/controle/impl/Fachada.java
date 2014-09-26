@@ -37,15 +37,13 @@ public class Fachada<F extends EntidadeDominio> implements IFachada<F> {
 
 	
 	@Override
-	public Resultado<F> consultar(F entidade) {
-		
+	public Resultado<F> consultar(F entidade) {	
 		IDAO<F> dao = daos.get(entidade.getClass().getName());
         Resultado<F> r = null;
         List<F> entidades = dao.consultar(entidade);
         if( entidades != null){
         	r = new Resultado<F>();
-        	r.setEntidades(entidades);
-        	
+        	r.setEntidades(entidades);    
         }
         return r;
 	}

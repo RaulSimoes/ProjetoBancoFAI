@@ -1,5 +1,7 @@
 package fai.controle.web.command.impl;
 
+import java.util.List;
+
 import fai.controle.web.command.ICommandFrontController;
 import fai.core.controle.IFachada;
 import fai.domain.EntidadeDominio;
@@ -10,8 +12,8 @@ public class CommandFrontControllerLogar<E> implements ICommandFrontController<E
 	private IFachada fachada;
 	
 	@Override
-	public void execute(EntidadeDominio entidade) {
-		fachada.consultar(entidade);	
+	public Resultado<EntidadeDominio> execute(EntidadeDominio entidade) {
+		return fachada.consultar(entidade);		
 	}	
 	
 	public void setFachada(IFachada fachada) {
