@@ -47,7 +47,7 @@ public class Fachada<F extends EntidadeDominio> implements IFachada<F> {
         }
         return r;
 	}
-
+	
 	@Override
 	public Resultado<F> excluir(F entidade) {
 		return null;
@@ -59,6 +59,17 @@ public class Fachada<F extends EntidadeDominio> implements IFachada<F> {
 		this.daos = daos;
 	}
 
+	
+	public Resultado<F> consultarUsuarioLogar(F entidade) {	
+		IDAO<F> dao = daos.get(entidade.getClass().getName());
+        Resultado<F> r = null;
+        List<F> entidades = dao.consultar(entidade);
+        if( entidades != null){
+        	r = new Resultado<F>();
+        	r.setEntidades(entidades);    
+        }
+        return r;
+	}	
 	
 	
 }
