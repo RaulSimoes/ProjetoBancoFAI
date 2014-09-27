@@ -31,9 +31,12 @@ public class LogarUsuarioVHWeb <U extends Usuario> implements IViewHelperWeb<U> 
 	public void setView(Resultado rs, HttpServletRequest rq,
 			HttpServletResponse rp) throws ServletException, IOException {
 		if(rs.getEntidades().size() > 0){
-			//rq.setAttribute("cli", cliente);
-			rq.getRequestDispatcher("FormUsuario.html").
-				forward(rq, rp);
+			Usuario usuario = (Usuario)rs.getEntidades().get(0);
+			if(usuario.getTipo_cliente().equals("Cliente")){
+				rq.getRequestDispatcher("FormUsuario.html").forward(rq, rp);//direcionar para página do cliente				
+			}else{
+				rq.getRequestDispatcher("FormUsuario.html").forward(rq, rp); //direcionar para página do funcionario			
+			}
 		}else{
 			rq.getRequestDispatcher("FormLogin.html").
 			forward(rq, rp);			
