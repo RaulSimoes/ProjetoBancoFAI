@@ -2,15 +2,10 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="fai-domain" transaction-type="RESOURCE_LOCAL">
 <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<class>fai.domain.Produto</class>
-		<class>fai.domain.Categoria</class>
-		<class>fai.domain.Fornecedor</class>
-		<class>fai.domain.Pedido</class>
-		<class>fai.domain.Item</class>
-		<class>fai.domain.Modelo</class>
 		<class>fai.domain.EntidadeDominio</class>
 		<class>fai.domain.Usuario</class>
-		<class>fai.domain.Log</class>		
+    	<class>fai.domain.Conta</class>
+    	<class>fai.domain.Transacao</class>	    		
 
 
 		<properties>

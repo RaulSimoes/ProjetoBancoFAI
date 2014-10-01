@@ -18,11 +18,11 @@ public class UsuarioJpaDAO<U extends Usuario> extends AbstractJpaDAO<U> {
 		Query con = em.createQuery("select u from Usuario u where"
 				+ " u.senha = :senhaUsu and u.agencia = :agenciaUsu "
 				+ "and u.conta = :contaUsu");
-		con.setParameter("senhaUsu", u.getSenha());
+	/*	con.setParameter("senhaUsu", u.getSenha());
 		con.setParameter("agenciaUsu", u.getSenha());		
 		con.setParameter("contaUsu", u.getSenha());				
 		//Query con = em.createQuery("select * from Usuario where u.agencia = '1'");
-		usuarios= con.getResultList();
+		usuarios= con.getResultList();*/
 		return usuarios;
 	}
 	
@@ -32,11 +32,11 @@ public class UsuarioJpaDAO<U extends Usuario> extends AbstractJpaDAO<U> {
 		Query con = em.createQuery("select u from Usuario u where"
 				+ " u.senha = :senhaUsu and u.agencia = :agenciaUsu "
 				+ "and u.conta = :contaUsu");
-		con.setParameter("senhaUsu", u.getSenha());
+		/*con.setParameter("senhaUsu", u.getSenha());
 		con.setParameter("agenciaUsu", u.getAgencia());		
 		con.setParameter("contaUsu", u.getConta());				
 		//Query con = em.createQuery("select * from Usuario where u.agencia = '1'");
-		usuarios= con.getResultList();
+		usuarios= con.getResultList();*/
 		return usuarios;
 	}
 }

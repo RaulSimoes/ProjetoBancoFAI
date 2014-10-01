@@ -17,8 +17,6 @@
 
 		<property name="daos">
 			<map>
-				<entry key="fai.domain.TipoCliente" value-ref="tipoClienteDAO"/>
-				<entry key="fai.domain.Categoria" value-ref="categoriaJpaDAO"/>
 				<entry key="fai.domain.Usuario" value-ref="usuarioJpaDAO"/><!--usuario-->
 			</map>
 		</property>
@@ -34,23 +32,11 @@
 	<util:map id="vhs" map-class="java.util.HashMap"
 		key-type="java.lang.String" value-type="fai.controle.web.command.ICommandFrontController">
 
-		<entry key="/fai-web/SalvarTipoCliente" value-ref="salvarTipoClienteVHWeb" />
-		<entry key="/fai-web/SalvarCliente" value-ref="salvarClienteVHWeb" />
-		<entry key="/fai-web/SalvarCategoria" value-ref="salvarCategoriaVHWeb" />
 		<entry key="/fai-web/SalvarUsuario" value-ref="salvarUsuarioVHWeb" /><!--usuario-->
 		<entry key="/fai-web/LogarUsuario" value-ref="logarUsuarioVHWeb" /><!--logar-->		
 
 	</util:map>
 
-	<bean id="salvarTipoClienteVHWeb"
-		class="fai.controle.web.vh.SalvarTipoClienteVHWeb">
-		<property name="tipo" ref="tipo"/>
-	</bean>
-	
-	<bean id="salvarCategoriaVHWeb"
-		class="fai.controle.web.vh.SalvarCategoriaVHWeb">
-		<property name="categoria" ref="categoria"/>
-	</bean>
 	<!--usuario-->
 	<bean id="salvarUsuarioVHWeb"
 		class="fai.controle.web.vh.SalvarUsuarioVHWeb">
@@ -62,14 +48,6 @@
 		<property name="usuario" ref="usuario"/>
 	</bean>	
 	
-	<bean id="salvarClienteVHWeb"
-		class="fai.controle.web.vh.SalvarClienteVHWeb">
-		<property name="cliente" ref="cliente"/>
-	</bean>
-	
-	<bean id="cliente" class="fai.domain.Cliente"/>
-	<bean id="tipo" class="fai.domain.TipoCliente"/>
-	<bean id="categoria" class="fai.domain.Categoria"/>	
 	<bean id="usuario" class="fai.domain.Usuario"/><!--usuario-->
 
 	<bean id="commandFrontControllerSalvar"
@@ -118,14 +96,6 @@
 		<property name="lazyInit" value="false" />
 	</bean>
 
-	<bean id="tipoClienteDAO" class="fai.dao.jdbc.impl.TipoClienteDAO">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
-	
-	<bean id="categoriaJpaDAO" class="fai.dao.jpa.impl.CategoriaJpaDAO">
-		<property name="emf" ref="entityManagerFactory" />
-	</bean>
-	
 	<!--usuario-->
 	<bean id="usuarioJpaDAO" class="fai.dao.jpa.impl.UsuarioJpaDAO">
 		<property name="emf" ref="entityManagerFactory" />

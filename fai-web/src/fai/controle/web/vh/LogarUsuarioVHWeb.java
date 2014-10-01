@@ -20,9 +20,9 @@ public class LogarUsuarioVHWeb <U extends Usuario> implements IViewHelperWeb<U> 
 		String conta = request.getParameter("txtConta");
 		String senha = request.getParameter("txtSenha");		
 		
-		usuario.setAgencia(agencia);
+		/*usuario.setAgencia(agencia);
 		usuario.setConta(conta);
-		usuario.setSenha(senha);			
+		usuario.setSenha(senha);*/			
 		
 		return usuario;
 	}

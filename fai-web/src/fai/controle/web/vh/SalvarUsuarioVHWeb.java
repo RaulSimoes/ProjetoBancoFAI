@@ -31,15 +31,15 @@ public class SalvarUsuarioVHWeb<C extends Usuario> implements IViewHelperWeb<C> 
 		String tipo_cliente = request.getParameter("txtTpCliente");
 			
 		usuario.setNome(nome);
-		usuario.setConta(conta);
+		//usuario.setConta(conta);
 		usuario.setCpf(cpf);
-		usuario.setSenha(senha);
+		//usuario.setSenha(senha);
 		
-		usuario.setSaldo(Float.valueOf(saldo));
+		//usuario.setSaldo(Float.valueOf(saldo));
 		usuario.setSalario(Float.valueOf(salario));
-		usuario.setLimite_credito(Float.valueOf(limite_credito));
+		//usuario.setLimite_credito(Float.valueOf(limite_credito));
 		
-		usuario.setAgencia(agencia);
+		//usuario.setAgencia(agencia);
 		usuario.setTipo_cliente(tipo_cliente);	
 		
 		return usuario;
