@@ -6,25 +6,26 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fai.domain.Conta;
 import fai.domain.EntidadeDominio;
 import fai.domain.Resultado;
 import fai.domain.Usuario;
 
-public class LogarUsuarioVHWeb <U extends Usuario> implements IViewHelperWeb<U> {
-	private Usuario usuario;
+public class LogarContaVHWeb <C extends Conta> implements IViewHelperWeb<C> {
+	private Conta conta;
 	@Override
 	public EntidadeDominio getEntidade(HttpServletRequest request)
 			throws ServletException, IOException {
 		
 		String agencia = request.getParameter("txtAgencia");
-		String conta = request.getParameter("txtConta");
+		String num_Conta = request.getParameter("txtConta");
 		String senha = request.getParameter("txtSenha");		
 		
-		/*usuario.setAgencia(agencia);
-		usuario.setConta(conta);
-		usuario.setSenha(senha);*/			
+		conta.setAgencia(agencia);
+		conta.setNum_conta(num_Conta);
+		conta.setSenha(senha);			
 		
-		return usuario;
+		return conta;
 	}
 
 	@Override
@@ -44,12 +45,12 @@ public class LogarUsuarioVHWeb <U extends Usuario> implements IViewHelperWeb<U> 
 	}
 
 	@Override
-	public void setEntidade(U entidade) {
-		this.usuario = entidade;		
+	public void setEntidade(C entidade) {
+		this.conta = entidade;		
 	}
 	
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setConta(Conta conta) {
+		this.conta = conta;
 	}	
 
 }

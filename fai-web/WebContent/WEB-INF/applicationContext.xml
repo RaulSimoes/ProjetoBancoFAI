@@ -17,7 +17,8 @@
 
 		<property name="daos">
 			<map>
-				<entry key="fai.domain.Usuario" value-ref="usuarioJpaDAO"/><!--usuario-->
+				<entry key="fai.domain.Usuario" value-ref="usuarioJpaDAO"/>
+				<entry key="fai.domain.Conta" value-ref="contaJpaDAO"/>				
 			</map>
 		</property>
 	</bean>
@@ -33,7 +34,7 @@
 		key-type="java.lang.String" value-type="fai.controle.web.command.ICommandFrontController">
 
 		<entry key="/fai-web/SalvarUsuario" value-ref="salvarUsuarioVHWeb" /><!--usuario-->
-		<entry key="/fai-web/LogarUsuario" value-ref="logarUsuarioVHWeb" /><!--logar-->		
+		<entry key="/fai-web/LogarConta" value-ref="logarContaVHWeb" /><!--logar-->		
 
 	</util:map>
 
@@ -42,13 +43,14 @@
 		class="fai.controle.web.vh.SalvarUsuarioVHWeb">
 		<property name="usuario" ref="usuario"/>
 	</bean>
-	<!--usuario-->
-	<bean id="logarUsuarioVHWeb"
-		class="fai.controle.web.vh.LogarUsuarioVHWeb">
-		<property name="usuario" ref="usuario"/>
+	<!--logar-->
+	<bean id="logarContaVHWeb"
+		class="fai.controle.web.vh.LogarContaVHWeb">
+		<property name="conta" ref="conta"/>
 	</bean>	
 	
 	<bean id="usuario" class="fai.domain.Usuario"/><!--usuario-->
+	<bean id="conta" class="fai.domain.Conta"/><!--conta-->	
 
 	<bean id="commandFrontControllerSalvar"
 		class="fai.controle.web.command.impl.CommandFrontControllerSalvar">
@@ -100,6 +102,10 @@
 	<bean id="usuarioJpaDAO" class="fai.dao.jpa.impl.UsuarioJpaDAO">
 		<property name="emf" ref="entityManagerFactory" />
 	</bean>
+	<!--conta-->
+	<bean id="contaJpaDAO" class="fai.dao.jpa.impl.ContaJpaDAO">
+		<property name="emf" ref="entityManagerFactory" />
+	</bean>	
 
 <!--  entity manager factory  -->
   <bean id="entityManagerFactory" 

@@ -14,7 +14,7 @@ public class CommandFrontControllerLogar<E> implements ICommandFrontController<E
 	
 	@Override
 	public Resultado<EntidadeDominio> execute(EntidadeDominio entidade) {
-		return ((Fachada)fachada).consultar(entidade);		
+		return fachada.consultar(entidade);		
 	}	
 	
 	public void setFachada(IFachada fachada) {
