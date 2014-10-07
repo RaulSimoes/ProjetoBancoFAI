@@ -10,8 +10,7 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Log
  *
  */
-@Entity
-@Table(name="TB_Log")
+
 public class Log extends EntidadeDominio implements Serializable {
 
 	

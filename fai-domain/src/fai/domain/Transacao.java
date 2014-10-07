@@ -20,6 +20,10 @@ public class Transacao extends EntidadeDominio implements Serializable {
 	@Column(length=10, nullable=false)	
 	private String tipo_transacao;
 	
+	@ManyToOne (cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name="conta_id")
+	private Conta conta;	
+	
 	/*@ManyToOne (cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="conta_id")
 	private Usuario conta;*/

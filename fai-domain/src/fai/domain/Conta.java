@@ -35,7 +35,7 @@ public class Conta extends EntidadeDominio implements Serializable{
 	@JoinColumn(name="usu_id")
 	private Usuario usuario;
 	
-	@OneToMany (mappedBy="transacao",
+	@OneToMany (mappedBy="conta",
 			cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Transacao> transacaos;	
 	
