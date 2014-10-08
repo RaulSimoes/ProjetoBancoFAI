@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Logar</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid>
+			<h:outputLabel value="Agência"></h:outputLabel>
+			<h:inputText value="#{logarBean.agencia}"></h:inputText>
+			<h:outputLabel value="Conta:"></h:outputLabel>
+			<h:inputText value="#{logarBean.num_conta}"></h:inputText>
+			<h:outputLabel value="Senha:"></h:outputLabel>
+			<h:inputText value="#{logarBean.senha}"></h:inputText>
+			<!--<h:inputSecret id="input-senha"></h:inputSecret>-->			
+			<h:commandButton action="#{logarBean.logar}" value="Logar"/>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

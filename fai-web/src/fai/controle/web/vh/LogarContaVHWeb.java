@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import fai.domain.Conta;
 import fai.domain.EntidadeDominio;
 import fai.domain.Resultado;
-import fai.domain.Usuario;
 
 public class LogarContaVHWeb <C extends Conta> implements IViewHelperWeb<C> {
 	private Conta conta;
