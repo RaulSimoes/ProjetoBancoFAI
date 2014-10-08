@@ -10,6 +10,15 @@ public class ContaJpaDAO <C extends Conta> extends AbstractJpaDAO<C> {
 	@Override
 	public List<C> consultar(C entidade) {
 		Conta c = (Conta) entidade;
+		if (c.getAgencia().isEmpty() && c.getNum_conta().isEmpty() && c.getSenha().isEmpty()){
+			return 	null;
+		}else{
+			return 	consultarLogin(entidade);
+		}		
+	}
+	
+	private List<C> consultarLogin(C entidade) {
+		Conta c = (Conta) entidade;
 		List<C> contas=null;
 		Query con = em.createQuery("select c from Conta c where"
 				+ " c.senha = :senhaUsu and c.agencia = :agenciaUsu "
@@ -19,7 +28,7 @@ public class ContaJpaDAO <C extends Conta> extends AbstractJpaDAO<C> {
 		con.setParameter("contaUsu", c.getNum_conta());				
 		//Query con = em.createQuery("select * from Usuario where u.agencia = '1'");
 		contas= con.getResultList();
-		return contas;
+		return contas;		
 	}
 	
 	
