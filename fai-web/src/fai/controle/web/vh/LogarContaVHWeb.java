@@ -32,12 +32,12 @@ public class LogarContaVHWeb <C extends Conta> implements IViewHelperWeb<C> {
 	public void setView(Resultado rs, HttpServletRequest rq,
 			HttpServletResponse rp) throws ServletException, IOException {
 		if(rs.getEntidades().size() > 0){
-			Usuario usuario = (Usuario)rs.getEntidades().get(0);
-			if(usuario.getTipo_cliente().equals("Cliente")){
+			//Conta conta = (Conta)rs.getEntidades().get(0);
+			//if(usuario.getTipo_cliente().equals("Cliente")){
 				rq.getRequestDispatcher("FormUsuario.html").forward(rq, rp);//direcionar para página do cliente				
-			}else{
-				rq.getRequestDispatcher("FormUsuario.html").forward(rq, rp); //direcionar para página do funcionario			
-			}
+			//}else{
+			//	rq.getRequestDispatcher("FormUsuario.html").forward(rq, rp); //direcionar para página do funcionario			
+			//}
 		}else{
 			rq.getRequestDispatcher("FormLogin.html").
 			forward(rq, rp);			

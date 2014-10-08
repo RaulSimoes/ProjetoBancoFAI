@@ -60,7 +60,7 @@
 
     <servlet-mapping>
 		<servlet-name>ServletFai</servlet-name>
-		<url-pattern>/LogarUsuario</url-pattern><!--usuario-->
+		<url-pattern>/LogarConta</url-pattern><!--usuario-->
 	</servlet-mapping>
 
 </web-app>
