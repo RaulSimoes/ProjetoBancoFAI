@@ -24,16 +24,18 @@ public class ControllerJSF {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
 	
-	public void processRequest(String comando, EntidadeDominio entidadeDominio)
+	public Resultado processRequest(String comando, EntidadeDominio entidadeDominio)
 			throws ServletException, IOException {
 		Resultado<EntidadeDominio> resultado;		
 
 		EntidadeDominio entidade = entidadeDominio;
-
-		comando = comando.replaceAll("Bean", "");		
+		comando = comando.replaceAll("fai.controle.web.vh.", "");
+		comando = comando.replaceAll("Bean", "");
+		
 		ICommandFrontController<EntidadeDominio> cfc = getCommand(comando);
 		
-		resultado = cfc.execute(entidade);		
+		resultado = cfc.execute(entidade);	
+		return resultado;
 	}	
 	
 	private ICommandFrontController<EntidadeDominio> getCommand(String command){

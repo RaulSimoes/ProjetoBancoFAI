@@ -43,6 +43,7 @@
 		class="fai.controle.web.vh.SalvarUsuarioVHWeb">
 		<property name="usuario" ref="usuario"/>
 	</bean>
+	
 	<!--logar-->
 	<bean id="logarContaVHWeb"
 		class="fai.controle.web.vh.LogarContaVHWeb">

@@ -10,17 +10,18 @@
 	<ui:define name="conteudo">
 		<ul>
 			<!--Início Conteúdo-->
-			<h3>Banco - Login</h3>
+			<h3>Banco - Menu do Usuário</h3>
 			<h:form action="SalvarUsuario" method="post">
 				<h:panelGrid>
-					<h:outputLabel value="Agência" required="true"></h:outputLabel>
-					<h:inputText value="#{logarBean.agencia}"></h:inputText>
-					<h:outputLabel value="Conta:" required="true"></h:outputLabel>
-					<h:inputText value="#{logarBean.num_conta}"></h:inputText>
-					<h:outputLabel value="Senha:" required="true"></h:outputLabel>
-					<h:inputSecret value="#{logarBean.senha}"></h:inputSecret>
-					<!--<h:inputSecret id="input-senha"></h:inputSecret>-->
-					<h:commandButton action="#{logarBean.logar}" value="Logar" />
+					<h:commandButton action="FormSalvarUsuario" value="Cadastro Usuário"/>
+					<br></br>
+					<h:commandButton action="#{usuarioBeann.salvarUsuario}" value="Transações"/>
+					<br></br>
+					<h:commandButton action="#{usuarioBean.salvarUsuario}" value="Empréstimos"/>
+					<br></br>
+					<h:commandButton action="#{usuarioBean.salvarUsuario}" value="Pagamentos"/>
+					<br></br><br></br>
+					<h:commandButton action="FormLogin" value="Voltar"/>
 				</h:panelGrid>
 			</h:form>
 			<!--Fim Conteúdo-->

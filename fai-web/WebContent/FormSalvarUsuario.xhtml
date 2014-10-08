@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="Template.xhtml">
+	<ui:define name="conteudo">
+		<ul>
+			<!--Início Conteúdo-->
+			<h3>Banco - Cadastro de Usuário</h3>
+			<h:form action="SalvarUsuario" method="post">
+				<h:panelGrid>
+					<h:outputLabel value="Nome:" />
+					<h:inputText value="#{salvarBean.nome}" required="true" />
+					<h:outputLabel value="CPF:" />
+					<h:inputText value="#{salvarBean.cpf}" required="true" />
+					<h:outputLabel value="Valor do Salário Atual:" />
+					<h:inputText value="#{salvarBean.salario}" required="true" />
+					<h:outputLabel value="Tipo Cliente:" />
+
+					<h:selectOneMenu id="txtTpCliente" value="#{salvarBean.tipo_cliente}">
+						<f:selectItem id="item1" itemLabel="Funcionário" itemValue="func" />
+						<f:selectItem id="item2" itemLabel="Cliente" itemValue="clie" />
+					</h:selectOneMenu>
+					
+					<br></br>
+					<h:commandButton action="#{salvarBean.salvarUsuario}" value="Salvar" />
+				</h:panelGrid>
+			</h:form>
+			<!--Fim Conteúdo-->
+		</ul>
+	</ui:define>
+</ui:composition>
+</html>

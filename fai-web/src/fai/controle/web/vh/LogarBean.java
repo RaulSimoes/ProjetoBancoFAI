@@ -11,7 +11,7 @@ import fai.controle.web.impl.ControllerJSF;
 import fai.domain.Conta;
 
 @ManagedBean
-public class LogarBean {
+public class LogarBean{
 	private Conta conta;	
 	private String agencia;
 	private String num_conta;
@@ -23,16 +23,20 @@ public class LogarBean {
 	}
 
 	public String logar() throws ServletException, IOException{
+		
 		System.out.println("Agencia:" + agencia);
 		System.out.println("Número da conta:" + num_conta);
 		System.out.println("Senha:" + senha);
 		
+		conta = new Conta();
 		conta.setAgencia(agencia);
 		conta.setNum_conta(num_conta);
 		conta.setSenha(senha);
+		
+		controleJSF = new ControllerJSF();
 		controleJSF.processRequest(this.getClass().getName(), conta);
 		
-		return (String)"FormUsuario";		
+		return (String)"FormMenuUsuario";		
 	}
 	
 	
