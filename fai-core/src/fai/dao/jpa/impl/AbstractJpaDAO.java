@@ -1,12 +1,3 @@
-/*
- * QUADRANS TECNOLOGIA;
- * TODO Produto $(product_name} - ${product_description}<br>
- *
- * Data de Criação: Aug 22, 2014<br>
- * <br>
- * Todos os direitos reservados.
- */
-
 package fai.dao.jpa.impl;
 
 import javax.persistence.EntityManager;

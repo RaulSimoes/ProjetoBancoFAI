@@ -9,6 +9,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import fai.controle.web.impl.ControllerJSF;
 import fai.domain.Conta;
+import fai.domain.Resultado;
 
 @ManagedBean
 public class LogarEntidadeContaBean{
@@ -16,6 +17,7 @@ public class LogarEntidadeContaBean{
 	private String agencia;
 	private String num_conta;
 	private String senha;
+	private String erroLogin;	
 	ControllerJSF controleJSF;	
 	
 	public LogarEntidadeContaBean() {
@@ -23,20 +25,35 @@ public class LogarEntidadeContaBean{
 	}
 
 	public String logar() throws ServletException, IOException{
-		
-		System.out.println("Agencia:" + agencia);
-		System.out.println("Número da conta:" + num_conta);
-		System.out.println("Senha:" + senha);
-		
 		conta = new Conta();
 		conta.setAgencia(agencia);
 		conta.setNum_conta(num_conta);
 		conta.setSenha(senha);
 		
 		controleJSF = new ControllerJSF();
-		controleJSF.processRequest(this.getClass().getName(), conta);
+		Resultado rs = controleJSF.processRequest(this.getClass().getName(), conta);		
+
+		if(rs.getEntidades().size() > 0){
+			Conta conta = (Conta)rs.getEntidades().get(0);
+			//if(usuario.getTipo_cliente().equals("Cliente")){
+				//rq.getRequestDispatcher("FormUsuario.html").forward(rq, rp);//direcionar para página do cliente				
+			//}else{
+				//rq.getRequestDispatcher("FormUsuario.html").forward(rq, rp); //direcionar para página do funcionario			
+			//}			
+			setAgencia("");
+			setNum_conta("");
+			setSenha("");
+			setErroLogin("");					
+			return (String)"FormMenuUsuario";			
+		}else{					
+			//retornar que houve erro	
+			setAgencia("");
+			setNum_conta("");
+			setSenha("");
+			setErroLogin("Erro no Login. Verifique se os dados digítados estam corretos!");			
+			return (String)"FormLogin";			
+		}		
 		
-		return (String)"FormMenuUsuario";		
 	}
 	
 	
@@ -73,5 +90,13 @@ public class LogarEntidadeContaBean{
 
 	public void setConta(Conta conta) {
 		this.conta = conta;
+	}
+
+	public String getErroLogin() {
+		return erroLogin;
+	}
+
+	public void setErroLogin(String erroLogin) {
+		this.erroLogin = erroLogin;
 	}	
 }

@@ -11,7 +11,7 @@
 		<ul>
 			<!--Início Conteúdo-->
 			<h3>Banco - Login</h3>
-			<h:form action="SalvarUsuario" method="post">
+			<h:form>
 				<h:panelGrid>
 					<h:outputLabel value="Agência" required="true"></h:outputLabel>
 					<h:inputText value="#{logarEntidadeContaBean.agencia}"></h:inputText>
@@ -19,8 +19,8 @@
 					<h:inputText value="#{logarEntidadeContaBean.num_conta}"></h:inputText>
 					<h:outputLabel value="Senha:" required="true"></h:outputLabel>
 					<h:inputSecret value="#{logarEntidadeContaBean.senha}"></h:inputSecret>
-					<!--<h:inputSecret id="input-senha"></h:inputSecret>-->
 					<h:commandButton action="#{logarEntidadeContaBean.logar}" value="Logar" />
+					<h:outputText value="#{logarEntidadeContaBean.erroLogin}" />					
 				</h:panelGrid>
 			</h:form>
 			<!--Fim Conteúdo-->
