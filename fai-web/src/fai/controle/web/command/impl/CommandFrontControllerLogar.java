@@ -19,6 +19,5 @@ public class CommandFrontControllerLogar<E> implements ICommandFrontController<E
 	
 	public void setFachada(IFachada fachada) {
 		this.fachada = fachada;
-	}
-	
+	}	
 }

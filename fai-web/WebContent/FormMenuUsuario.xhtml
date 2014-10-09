@@ -13,7 +13,7 @@
 			<h3>Banco - Menu do Usuário</h3>
 			<h:form action="SalvarUsuario" method="post">
 				<h:panelGrid>
-					<h:commandButton action="FormSalvarUsuario" value="Cadastro Usuário"/>
+					<h:commandButton action="FormSalvarUsuario" value="Cadastro Usuário" rendered="#{logarEntidadeContaBean.mostrarBotao}"/>
 					<br></br>
 					<h:commandButton action="#{usuarioBeann.salvarUsuario}" value="Transações"/>
 					<br></br>

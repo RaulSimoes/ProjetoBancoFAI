@@ -17,7 +17,8 @@ public class LogarEntidadeContaBean{
 	private String agencia;
 	private String num_conta;
 	private String senha;
-	private String erroLogin;	
+	private String erroLogin;
+	private boolean mostrarBotao;
 	ControllerJSF controleJSF;	
 	
 	public LogarEntidadeContaBean() {
@@ -43,7 +44,8 @@ public class LogarEntidadeContaBean{
 			setAgencia("");
 			setNum_conta("");
 			setSenha("");
-			setErroLogin("");					
+			setErroLogin("");	
+			setMostrarBotao(false);
 			return (String)"FormMenuUsuario";			
 		}else{					
 			//retornar que houve erro	
@@ -98,5 +100,13 @@ public class LogarEntidadeContaBean{
 
 	public void setErroLogin(String erroLogin) {
 		this.erroLogin = erroLogin;
+	}
+
+	public boolean getMostrarBotao() {
+		return mostrarBotao;
+	}
+
+	public void setMostrarBotao(boolean mostrarBotao) {
+		this.mostrarBotao = mostrarBotao;
 	}	
 }
