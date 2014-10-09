@@ -27,12 +27,16 @@ public class ControllerJSF {
 	public Resultado processRequest(String comando, EntidadeDominio entidadeDominio)
 			throws ServletException, IOException {
 		Resultado<EntidadeDominio> resultado;		
+		//comando = "fai.controle.web.vh." + "LogarEntidadeContaBean";
+		
+		comando = comando.replaceAll("fai.controle.web.vh.", "");
+		comando = comando.replaceAll("Bean", "");		
+		String array[] = new String[2];  		  		
+		array = comando.split("Entidade");
 
 		EntidadeDominio entidade = entidadeDominio;
-		comando = comando.replaceAll("fai.controle.web.vh.", "");
-		comando = comando.replaceAll("Bean", "");
-		
-		ICommandFrontController<EntidadeDominio> cfc = getCommand(comando);
+		ICommandFrontController<EntidadeDominio> cfc = getCommand(array[0]);				
+		//ICommandFrontController<EntidadeDominio> cfc = getCommand(comando);
 		
 		resultado = cfc.execute(entidade);	
 		return resultado;

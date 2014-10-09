@@ -14,13 +14,13 @@
 			<h:form action="SalvarUsuario" method="post">
 				<h:panelGrid>
 					<h:outputLabel value="Agência" required="true"></h:outputLabel>
-					<h:inputText value="#{logarBean.agencia}"></h:inputText>
+					<h:inputText value="#{logarEntidadeContaBean.agencia}"></h:inputText>
 					<h:outputLabel value="Conta:" required="true"></h:outputLabel>
-					<h:inputText value="#{logarBean.num_conta}"></h:inputText>
+					<h:inputText value="#{logarEntidadeContaBean.num_conta}"></h:inputText>
 					<h:outputLabel value="Senha:" required="true"></h:outputLabel>
-					<h:inputSecret value="#{logarBean.senha}"></h:inputSecret>
+					<h:inputSecret value="#{logarEntidadeContaBean.senha}"></h:inputSecret>
 					<!--<h:inputSecret id="input-senha"></h:inputSecret>-->
-					<h:commandButton action="#{logarBean.logar}" value="Logar" />
+					<h:commandButton action="#{logarEntidadeContaBean.logar}" value="Logar" />
 				</h:panelGrid>
 			</h:form>
 			<!--Fim Conteúdo-->
