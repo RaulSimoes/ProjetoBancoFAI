@@ -5,7 +5,8 @@
 		<class>fai.domain.EntidadeDominio</class>
 		<class>fai.domain.Usuario</class>
     	<class>fai.domain.Conta</class>
-    	<class>fai.domain.Transacao</class>	    		
+    	<class>fai.domain.Transacao</class>
+    	<class>fai.domain.Boleto</class>	    		
 
 
 		<properties>

@@ -28,6 +28,10 @@ public class Usuario extends EntidadeDominio implements Serializable {
 				cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Conta> contas;
 	
+	@OneToMany (mappedBy="usuario",
+			cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	private List<Boleto> boletos;	
+	
 	private static final long serialVersionUID = 1L;
 
 	public String getNome() {
@@ -68,6 +72,14 @@ public class Usuario extends EntidadeDominio implements Serializable {
 
 	public void setContas(List<Conta> contas) {
 		this.contas = contas;
+	}
+
+	public List<Boleto> getBoletos() {
+		return boletos;
+	}
+
+	public void setBoletos(List<Boleto> boletos) {
+		this.boletos = boletos;
 	}
 
 }
