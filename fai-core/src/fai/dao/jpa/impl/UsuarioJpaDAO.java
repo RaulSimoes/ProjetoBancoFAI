@@ -13,8 +13,7 @@ public class UsuarioJpaDAO<U extends Usuario> extends AbstractJpaDAO<U> {
 	@Override
 	public List<U> consultar(U entidade) {
 		Usuario u = (Usuario) entidade;
-		if (u.getId()<=0 && u.getCpf().isEmpty() && u.getDtCadastro() != null 
-			&& u.getNome().isEmpty() && u.getSalario()!=0 && u.getTipo_cliente().isEmpty()){
+		if (u.getId()<=0 && u.getCpf() == null && u.getNome()== null && u.getSalario()== null && u.getTipo_cliente()== null){
 			return consultarTodosUsuarios(entidade);
 		}else{
 			if(u.getId()!=0){

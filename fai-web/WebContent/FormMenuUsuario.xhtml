@@ -13,14 +13,14 @@
 			<h3>Banco - Menu do Usuário</h3>
 			<h:form action="SalvarUsuario" method="post">
 				<h:panelGrid>
-					<h:commandButton action="FormSalvarUsuario" value="Cadastro Usuário" rendered="#{logarEntidadeContaBean.mostrarBotao}"/>
+					<h:commandButton action="FormSalvarUsuario" value="Cadastro Usuário"/>
 					<br></br>
-					<h:commandButton action="#{usuarioBean.salvarUsuario}" value="Transações"/>
+					<h:commandButton  value="Transações"/>
 					<br></br>
-					<h:commandButton action="#{usuarioBean.salvarUsuario}" value="Empréstimos"/>
+					<h:commandButton  value="Empréstimos"/>
 					<br></br>
-					<h:commandButton action="#{usuarioBean.salvarUsuario}" value="Pagamentos"/>
-					<br></br><br></br>
+					<h:commandButton  value="Pagamentos"/>
+					<br></br>
 					<h:commandButton action="FormLogin" value="Voltar"/>
 				</h:panelGrid>
 			</h:form>

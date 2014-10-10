@@ -14,11 +14,11 @@
 			<h:form action="SalvarUsuario" method="post">
 				<h:panelGrid>
 					<h:outputLabel value="Nome:" />
-					<h:inputText value="#{salvarBean.nome}" required="true" />
+					<h:inputText value="#{salvarBean.nome}" />
 					<h:outputLabel value="CPF:" />
-					<h:inputText value="#{salvarBean.cpf}" required="true" />
+					<h:inputText value="#{salvarBean.cpf}" />
 					<h:outputLabel value="Valor do Salário Atual:" />
-					<h:inputText value="#{salvarBean.salario}" required="true" />
+					<h:inputText value="#{salvarBean.salario}"  />
 					<h:outputLabel value="Tipo Cliente:" />
 
 					<h:selectOneMenu id="txtTpCliente" value="#{salvarBean.tipo_cliente}">
@@ -28,6 +28,7 @@
 					
 					<br></br>
 					<h:commandButton action="#{salvarBean.salvarUsuario}" value="Salvar" />
+					<h:commandButton action="#{consultarEntidadeUsuarioBean.listarUsuario}" value="Listar Usuários" />
 				</h:panelGrid>
 			</h:form>
 			<!--Fim Conteúdo-->

@@ -18,44 +18,58 @@ import fai.domain.Usuario;
 public class ConsultarEntidadeUsuarioBean{
 	
 	private Usuario usuario;
+	private List<Usuario> listaDeUsuario = new ArrayList<Usuario>();
 	ControllerJSF controleJSF;
 	
-	public ConsultarEntidadeUsuarioBean (){
+	public ConsultarEntidadeUsuarioBean () throws ServletException, IOException{
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-	}
+	}	
 	
-	public List<Usuario> listarUsuario() throws ServletException, IOException{
-			
-		List<Usuario> listaUsuario = new ArrayList<Usuario>();
-		
+	public String listarUsuario() throws ServletException, IOException{
+				
 		usuario = new Usuario();
-		
 		controleJSF = new ControllerJSF();
 		Resultado rs = controleJSF.processRequest(this.getClass().getName(), usuario);
 		
 		//Usuario usuario = (Usuario) rs.getEntidades().get(0);
-		
-		listaUsuario = (List<Usuario>) rs.getEntidades(); //carrega para dentro da lista
+		listaDeUsuario = (List<Usuario>) rs.getEntidades(); //carrega para dentro da lista
 		
 		//System.out.println(usuario.getNome());
-		
 		/*for (Object o : rs.getEntidades()) {
 			Usuario usu = (Usuario)o; 
 			System.out.println(usu.getNome());
 		}*/
-		
-		return listaUsuario;
 		//return (String) "FormListarUsuario";
+		
+		return (String) "FormConsultarUsuario";
 	}
 	
-	public List<Usuario> teste() throws ServletException, IOException {
-		List<Usuario> listaUsuario = new ArrayList<Usuario>();
-		return listaUsuario;
-	}
-
 	public Resultado consultar(EntidadeDominio entidade) throws ServletException, IOException{
 		controleJSF = new ControllerJSF();
 		return controleJSF.processRequest(this.getClass().getName(), entidade);						
-	}	
-	
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Usuario> getListaDeUsuario() {
+		return listaDeUsuario;
+	}
+
+	public void setListaDeUsuario(List<Usuario> listaDeUsuario) {
+		this.listaDeUsuario = listaDeUsuario;
+	}
+
+	public ControllerJSF getControleJSF() {
+		return controleJSF;
+	}
+
+	public void setControleJSF(ControllerJSF controleJSF) {
+		this.controleJSF = controleJSF;
+	}
 }
