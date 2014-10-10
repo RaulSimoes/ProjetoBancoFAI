@@ -27,9 +27,11 @@
 		key-type="java.lang.String" value-type="fai.controle.web.command.ICommandFrontController">
 
 		<entry key="commandFrontControllerSalvar" value-ref="commandFrontControllerSalvar" />
-		<entry key="commandFrontControllerLogar" value-ref="commandFrontControllerLogar" />		
+		<entry key="commandFrontControllerLogar" value-ref="commandFrontControllerLogar" />	
+		<entry key="commandFrontControllerConsultar" value-ref="commandFrontControllerConsultar" />		
 	</util:map>
 	
+	<!--nao utilizado-->
 	<util:map id="vhs" map-class="java.util.HashMap"
 		key-type="java.lang.String" value-type="fai.controle.web.command.ICommandFrontController">
 
@@ -57,8 +59,14 @@
 		class="fai.controle.web.command.impl.CommandFrontControllerSalvar">
 		<property name="fachada" ref="fachada" />
 	</bean>
+	
 	<bean id="commandFrontControllerLogar"
 		class="fai.controle.web.command.impl.CommandFrontControllerLogar">
+		<property name="fachada" ref="fachada" />
+	</bean>	
+	
+	<bean id="commandFrontControllerConsultar"
+		class="fai.controle.web.command.impl.CommandFrontControllerConsultar">
 		<property name="fachada" ref="fachada" />
 	</bean>	
 	
@@ -69,7 +77,6 @@
 
 	<!-- arquivo properties -->
 	<context:property-placeholder location="classpath:fai/resources/jdbc.properties" />
-
 	<!-- Config. datasource -->
 
 
@@ -119,8 +126,4 @@
     </property>
   </bean>
  <tx:annotation-driven transaction-manager="transactionManagerJPA" /> 
-
-
-
-
 </beans>  
