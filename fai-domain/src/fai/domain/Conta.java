@@ -70,5 +70,17 @@ public class Conta extends EntidadeDominio implements Serializable{
 	}
 	public void setNum_conta(String num_conta) {
 		this.num_conta = num_conta;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public List<Transacao> getTransacaos() {
+		return transacaos;
+	}
+	public void setTransacaos(List<Transacao> transacaos) {
+		this.transacaos = transacaos;
 	}	
 }

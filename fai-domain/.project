@@ -3,8 +3,6 @@
 	<name>fai-domain</name>
 	<comment></comment>
 	<projects>
-		<project>fai-core</project>
-		<project>fai-web</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

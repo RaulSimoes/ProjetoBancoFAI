@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import fai.controle.web.impl.ControllerJSF;
+import fai.domain.EntidadeDominio;
 import fai.domain.Resultado;
 import fai.domain.Usuario;
 
@@ -51,5 +52,10 @@ public class ConsultarEntidadeUsuarioBean{
 		List<Usuario> listaUsuario = new ArrayList<Usuario>();
 		return listaUsuario;
 	}
+
+	public Resultado consultar(EntidadeDominio entidade) throws ServletException, IOException{
+		controleJSF = new ControllerJSF();
+		return controleJSF.processRequest(this.getClass().getName(), entidade);						
+	}	
 	
 }

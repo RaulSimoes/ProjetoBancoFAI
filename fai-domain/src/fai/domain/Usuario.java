@@ -62,4 +62,12 @@ public class Usuario extends EntidadeDominio implements Serializable {
 		this.salario = salario;
 	}
 
+	public List<Conta> getContas() {
+		return contas;
+	}
+
+	public void setContas(List<Conta> contas) {
+		this.contas = contas;
+	}
+
 }

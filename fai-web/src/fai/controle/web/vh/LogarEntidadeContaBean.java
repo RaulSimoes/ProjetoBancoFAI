@@ -7,9 +7,11 @@ import javax.servlet.ServletException;
 
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import fai.controle.web.command.impl.CommandFrontControllerConsultar;
 import fai.controle.web.impl.ControllerJSF;
 import fai.domain.Conta;
 import fai.domain.Resultado;
+import fai.domain.Usuario;
 
 @ManagedBean
 public class LogarEntidadeContaBean{
@@ -35,17 +37,19 @@ public class LogarEntidadeContaBean{
 		Resultado rs = controleJSF.processRequest(this.getClass().getName(), conta);		
 
 		if(rs.getEntidades().size() > 0){
-			Conta conta = (Conta)rs.getEntidades().get(0);
-			//if(usuario.getTipo_cliente().equals("Cliente")){
-				//rq.getRequestDispatcher("FormUsuario.html").forward(rq, rp);//direcionar para página do cliente				
-			//}else{
-				//rq.getRequestDispatcher("FormUsuario.html").forward(rq, rp); //direcionar para página do funcionario			
-			//}			
+			ConsultarEntidadeUsuarioBean consultaUsuario = new ConsultarEntidadeUsuarioBean();
+			Conta conta = (Conta) rs.getEntidades().get(0);
+			rs = consultaUsuario.consultar(conta.getUsuario());
+			Usuario usuario = (Usuario)rs.getEntidades().get(0);
+			if(usuario.getTipo_cliente().equals("func")){
+				setMostrarBotao(true);				
+			}else{
+				setMostrarBotao(false);			
+			}			
 			setAgencia("");
 			setNum_conta("");
 			setSenha("");
 			setErroLogin("");	
-			setMostrarBotao(false);
 			return (String)"FormMenuUsuario";			
 		}else{					
 			//retornar que houve erro	
