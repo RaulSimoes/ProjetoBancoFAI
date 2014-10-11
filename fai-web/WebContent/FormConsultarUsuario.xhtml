@@ -13,14 +13,47 @@
 			<h3>Banco - Lista de Usuários</h3>
 			<h:form>
 				<h:panelGrid>
-				<h:outputText value="Usuários Cadastrados"></h:outputText>
-					<ui:repeat var="usuario" value="#{consultarEntidadeUsuarioBean.listaDeUsuario}">
-							<li><ui:include src="listaUsuario.xhtml">
-							<ui:param name="usuario" value="#{usuario}"></ui:param>
-							</ui:include></li>
-							<h:commandButton  value="Apagar"/>
-							<h:commandButton  value="Alterar"/>
-					</ui:repeat> 
+				<f:view>
+					 <h:dataTable value="#{consultarEntidadeUsuarioBean.listaDeUsuario}" var="usuario" border="1" >     
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Usuários"></h:outputText>
+								
+							</f:facet>
+							<h:outputText value="#{usuario.nome}"></h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="CPF"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{usuario.cpf}"></h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Valor Salário"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{usuario.salario}"></h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Tipo Cliente"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{usuario.tipo_cliente}"></h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value=""></h:outputText>
+							</f:facet>
+							<h:commandButton value="Alterar"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value=""></h:outputText>
+							</f:facet>
+							<h:commandButton value="Deletar"/>
+						</h:column>
+					</h:dataTable>
+				</f:view>
 				</h:panelGrid>
 			</h:form>
 			<!--Fim Conteúdo-->
@@ -28,5 +61,3 @@
 	</ui:define>
 </ui:composition>
 </html>
-
- 
