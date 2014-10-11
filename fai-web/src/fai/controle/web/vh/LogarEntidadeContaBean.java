@@ -3,6 +3,7 @@ package fai.controle.web.vh;
 import java.io.IOException;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.servlet.ServletException;
 
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -14,6 +15,7 @@ import fai.domain.Resultado;
 import fai.domain.Usuario;
 
 @ManagedBean
+@SessionScoped
 public class LogarEntidadeContaBean{
 	private Conta conta;	
 	private String agencia;
@@ -38,7 +40,7 @@ public class LogarEntidadeContaBean{
 
 		if(rs.getEntidades().size() > 0){
 			ConsultarEntidadeUsuarioBean consultaUsuario = new ConsultarEntidadeUsuarioBean();
-			Conta conta = (Conta) rs.getEntidades().get(0);
+			conta = (Conta) rs.getEntidades().get(0);
 			rs = consultaUsuario.consultar(conta.getUsuario());
 			Usuario usuario = (Usuario)rs.getEntidades().get(0);
 			if(usuario.getTipo_cliente().equals("func")){

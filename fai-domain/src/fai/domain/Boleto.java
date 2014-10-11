@@ -14,8 +14,12 @@ import javax.persistence.*;
 public class Boleto extends EntidadeDominio implements Serializable {
 	@Column(length=50, nullable=false)
 	private String codigo;
+	
 	@Column(length=12, nullable=false)	
 	private Float valor;
+
+	@Column(nullable=false)	
+	private boolean pago;	
 	
 	@ManyToOne (cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="usu_id")
@@ -49,6 +53,14 @@ public class Boleto extends EntidadeDominio implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public boolean getPago() {
+		return pago;
+	}
+
+	public void setPago(boolean pago) {
+		this.pago = pago;
 	}
    
 }

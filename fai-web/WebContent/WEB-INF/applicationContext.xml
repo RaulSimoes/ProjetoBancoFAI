@@ -18,7 +18,8 @@
 		<property name="daos">
 			<map>
 				<entry key="fai.domain.Usuario" value-ref="usuarioJpaDAO"/>
-				<entry key="fai.domain.Conta" value-ref="contaJpaDAO"/>				
+				<entry key="fai.domain.Conta" value-ref="contaJpaDAO"/>
+				<entry key="fai.domain.Boleto" value-ref="boletoJpaDAO"/>				
 			</map>
 		</property>
 	</bean>
@@ -28,7 +29,8 @@
 
 		<entry key="commandFrontControllerSalvar" value-ref="commandFrontControllerSalvar" />
 		<entry key="commandFrontControllerLogar" value-ref="commandFrontControllerLogar" />	
-		<entry key="commandFrontControllerConsultar" value-ref="commandFrontControllerConsultar" />		
+		<entry key="commandFrontControllerConsultar" value-ref="commandFrontControllerConsultar" />
+		<entry key="commandFrontControllerPagar" value-ref="commandFrontControllerPagar" />				
 	</util:map>
 	
 	<!--nao utilizado-->
@@ -68,7 +70,12 @@
 	<bean id="commandFrontControllerConsultar"
 		class="fai.controle.web.command.impl.CommandFrontControllerConsultar">
 		<property name="fachada" ref="fachada" />
-	</bean>	
+	</bean>
+	
+	<bean id="commandFrontControllerPagar"
+		class="fai.controle.web.command.impl.CommandFrontControllerPagar">
+		<property name="fachada" ref="fachada" />
+	</bean>			
 	
 	<bean id="factoryMethodVH"
 		class="fai.controle.web.vh.FactoryMethodVH">
@@ -113,7 +120,10 @@
 	<!--conta-->
 	<bean id="contaJpaDAO" class="fai.dao.jpa.impl.ContaJpaDAO">
 		<property name="emf" ref="entityManagerFactory" />
-	</bean>	
+	</bean>
+	<bean id="boletoJpaDAO" class="fai.dao.jpa.impl.BoletoJpaDAO">
+		<property name="emf" ref="entityManagerFactory" />
+	</bean>			
 
 <!--  entity manager factory  -->
   <bean id="entityManagerFactory" 

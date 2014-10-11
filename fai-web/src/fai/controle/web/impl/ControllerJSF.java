@@ -36,7 +36,6 @@ public class ControllerJSF {
 
 		EntidadeDominio entidade = entidadeDominio;
 		ICommandFrontController<EntidadeDominio> cfc = getCommand(array[0]);				
-		//ICommandFrontController<EntidadeDominio> cfc = getCommand(comando);
 		
 		resultado = cfc.execute(entidade);	
 		return resultado;
