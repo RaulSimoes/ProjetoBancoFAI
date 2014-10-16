@@ -12,15 +12,11 @@
 			<!--Início Conteúdo-->
 			<h3>Banco - Menu do Usuário</h3>
 			<h:form action="SalvarUsuario" method="post">
-				<h:panelGrid>
+				<h:panelGrid columns="1">
 					<h:commandButton action="FormSalvarUsuario" value="Cadastro Usuário"/>
-					<br></br>
-					<h:commandButton  action="FormTransacao" value="Transação"/>
-					<br></br>
-					<h:commandButton  value="Empréstimos"/>
-					<br></br>
-					<h:commandButton  value="Pagamentos"/>
-					<br></br>
+					<h:commandButton action="FormTransacao" value="Transação"/>
+					<h:commandButton value="Empréstimos"/>
+					<h:commandButton value="Pagamentos"/>
 					<h:commandButton action="FormLogin" value="Voltar"/>
 				</h:panelGrid>
 			</h:form>
