@@ -21,9 +21,9 @@ public class Boleto extends EntidadeDominio implements Serializable {
 	@Column(nullable=false)	
 	private boolean pago;	
 	
-	@ManyToOne (cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	/*@ManyToOne (cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="usu_id")
-	private Usuario usuario;
+	private Usuario usuario;*/
 	
 	private static final long serialVersionUID = 1L;
 
@@ -46,14 +46,14 @@ public class Boleto extends EntidadeDominio implements Serializable {
 	public void setValor(Float valor) {
 		this.valor = valor;
 	}
-
-	public Usuario getUsuario() {
+		
+	/*public Usuario getUsuario() {
 		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
+	}*/
 
 	public boolean getPago() {
 		return pago;

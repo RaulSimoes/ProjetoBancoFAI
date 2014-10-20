@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="Template.xhtml">
+	<ui:define name="conteudo">
+		<h3>Banco - Cadastro de Boleto</h3>	
+		<ul>
+			<!--Início Conteúdo-->
+			<h:form action="SalvarBoleto" method="post">
+				<h:panelGrid>
+					<h:outputLabel value="Código do boleto:" />
+					<h:inputText value="#{salvarEntidadeBoletoBean.codigo}" />
+					<h:outputLabel value="Valor:" />
+					<h:inputText value="#{salvarEntidadeBoletoBean.valor}" />
+					
+					<br></br>
+					<h:commandButton action="#{salvarEntidadeBoletoBean.salvarBoleto}" value="Salvar" />
+				</h:panelGrid>
+			</h:form>
+			<!--Fim Conteúdo-->
+		</ul>
+	</ui:define>
+</ui:composition>
+</html>
