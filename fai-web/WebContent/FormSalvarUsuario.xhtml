@@ -11,24 +11,36 @@
 		<ul>
 			<!--Início Conteúdo-->
 			<h3>Banco - Cadastro de Usuário</h3>
-			<h:form action="SalvarUsuario" method="post">
-				<h:panelGrid>
+			<h:form >
+				<h:panelGrid columns="2">
 					<h:outputLabel value="Nome:" />
-					<h:inputText value="#{salvarBean.nome}" />
+					<h:inputText value="#{salvarEntidadeUsuarioBean.nome}" />
 					<h:outputLabel value="CPF:" />
-					<h:inputText value="#{salvarBean.cpf}" />
+					<h:inputText value="#{salvarEntidadeUsuarioBean.cpf}" />
 					<h:outputLabel value="Valor do Salário Atual:" />
-					<h:inputText value="#{salvarBean.salario}"  />
+					<h:inputText value="#{salvarEntidadeUsuarioBean.salario}"  />
 					<h:outputLabel value="Tipo Cliente:" />
-
-					<h:selectOneMenu id="txtTpCliente" value="#{salvarBean.tipo_cliente}">
+					
+					<h:selectOneMenu id="txtTpCliente" value="#{salvarEntidadeUsuarioBean.tipo_cliente}">
 						<f:selectItem id="item1" itemLabel="Funcionário" itemValue="func" />
 						<f:selectItem id="item2" itemLabel="Cliente" itemValue="clie" />
 					</h:selectOneMenu>
 					
-					<br></br>
-					<h:commandButton action="#{salvarBean.salvarUsuario}" value="Salvar" />
-					<h:commandButton action="#{consultarEntidadeUsuarioBean.listarUsuario}" value="Listar Usuários" />
+					<h:outputLabel value="Agência:" />
+					<h:inputText value="#{salvarEntidadeUsuarioBean.agencia}" />
+					<h:outputLabel value="Nº Conta:" />
+					<h:inputText value="#{salvarEntidadeUsuarioBean.num_conta}" />
+					<h:outputLabel value="Senha:" />
+					<h:inputSecret value="#{salvarEntidadeUsuarioBean.senha}" />
+					<h:outputLabel value="Saldo Atual:" />
+					<h:inputText value="#{salvarEntidadeUsuarioBean.saldo}" />
+					<h:outputLabel value="Limite Crédito:" />
+					<h:inputText value="#{salvarEntidadeUsuarioBean.limite_credito}" />
+					
+					<h:panelGrid columns="2">
+						<h:commandButton action="#{salvarEntidadeUsuarioBean.salvarUsuario}" value="Salvar" />
+						<h:commandButton action="#{consultarEntidadeUsuarioBean.listarUsuario}" value="Listar Todos" />
+					</h:panelGrid>
 				</h:panelGrid>
 			</h:form>
 			<!--Fim Conteúdo-->
