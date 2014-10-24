@@ -13,23 +13,30 @@
 			<h3>Banco - Lista de Usuários</h3>
 			<h:form>
 				<h:panelGrid>
-					<p:dataTable id="eventsDT" var="usuario"
-						value="#{consultarEntidadeUsuarioBean.listaDeUsuario}" selectionMode="single" 
-						selection="#{consultarEntidadeUsuarioBean.listaDeUsuario}"
+				<p:growl id="msgs" showDetail="true" />
+					<p:dataTable id="eventsDT" var="usuario" value="#{consultarEntidadeUsuarioBean.listaDeUsuario}" 
+						selectionMode="single" 
+						selection="#{dtSelectionView.listaDeUsuario}"
 						rowKey="#{usuario.nome}">
 						
 						<f:facet name="header">
-            				Usuários Banco
+            				Usuários do Banco
         				</f:facet>
         				
-						<p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update=":form:msgs" />
-						<p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update=":form:msgs" />
-						
-						<p:column headerText="Id">
-						</p:column>
+						<p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}"/>
+						<p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}"/>
 						
 						<p:column headerText="Nome">
 							<h:outputText value="#{usuario.nome}" />
+						</p:column>
+						<p:column headerText="CPF">
+							<h:outputText value="#{usuario.cpf}" />
+						</p:column>
+						<p:column headerText="Salário">
+							<h:outputText value="#{usuario.salario}" />
+						</p:column>
+						<p:column headerText="Tipo">
+							<h:outputText value="#{usuario.tipo_cliente}" />
 						</p:column>
 						
 					</p:dataTable>
