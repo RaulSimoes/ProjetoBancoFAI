@@ -11,6 +11,12 @@
         <dependent-module archiveName="postgresql-9.3-1102.jdbc41.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Raul/workspace/projetoEclipse/fai-web/WebContent/WEB-INF/lib/postgresql-9.3-1102.jdbc41.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="fai-core.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fai-core/fai-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fai-domain.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fai-domain/fai-domain">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="fai-web"/>
         <property name="java-output-path" value="/fai-web/build/classes"/>
     </wb-module>
