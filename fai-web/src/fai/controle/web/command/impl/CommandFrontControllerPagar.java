@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import fai.controle.impl.Fachada;
 import fai.controle.web.command.ICommandFrontController;
 import fai.controle.web.vh.LogarEntidadeContaBean;
 import fai.core.controle.IFachada;
@@ -20,12 +21,19 @@ public class CommandFrontControllerPagar<E> implements ICommandFrontController<E
 	//@ManagedProperty(value = "#{logarEntidadeContaBean}")
 	private LogarEntidadeContaBean logarEntidadeContaBean; 
 	
-	private IFachada fachada;		
+	private Fachada fachada;		
 	
 	
 	@Override
 	public Resultado<EntidadeDominio> execute(EntidadeDominio entidade) {
+		fachada = new Fachada<EntidadeDominio>();
+		fachada.pagar(entidade);
+		
+		
+		
+		
 		Resultado rs = fachada.consultar(entidade);
+		
 		if (rs.getEntidades().size() > 0){
 		Boleto boleto = (Boleto)rs.getEntidades().get(0); 	
 			if (!boleto.getPago() ){	
@@ -61,9 +69,10 @@ public class CommandFrontControllerPagar<E> implements ICommandFrontController<E
 	    return session.getAttribute(attribute);               
 	} 	
 	
+	/*
 	public void setFachada(IFachada fachada) {
 		this.fachada = fachada;
-	}
+	}*/
 
 	public LogarEntidadeContaBean getLogarEntidadeContaBean() {
 		return logarEntidadeContaBean;

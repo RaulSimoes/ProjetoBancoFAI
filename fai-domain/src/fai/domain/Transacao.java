@@ -54,4 +54,5 @@ public class Transacao extends EntidadeDominio implements Serializable {
 		this.tipo_transacao = tipo_transacao;
 	}
    
+	
 }
