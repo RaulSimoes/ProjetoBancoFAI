@@ -24,7 +24,7 @@ public class CommandFrontControllerPagar<E> implements ICommandFrontController<E
 	
 	
 	@Override
-	public Resultado<EntidadeDominio> execute(EntidadeDominio entidade) {
+	public Resultado<EntidadeDominio> execute(EntidadeDominio entidade) {				
 		Resultado rs = fachada.consultar(entidade);
 		if (rs.getEntidades().size() > 0){
 		Boleto boleto = (Boleto)rs.getEntidades().get(0); 	

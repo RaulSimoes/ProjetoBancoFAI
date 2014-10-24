@@ -7,28 +7,31 @@ import javax.servlet.ServletException;
 
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import fai.controle.impl.Fachada;
 import fai.controle.web.impl.ControllerJSF;
 import fai.domain.Boleto;
+import fai.domain.EntidadeDominio;
 import fai.domain.Resultado;
+import fai.domain.Transacao;
 
 @ManagedBean
 public class PagarEntidadeBoletoBean {
 	private ControllerJSF controleJSF;
-	private Boleto boleto;	
+	private Transacao transacao;	
 	private String numBoleto;
 	
 	public PagarEntidadeBoletoBean() {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}	
 	public String pagar() throws ServletException, IOException{
-		boleto = new Boleto();
-		boleto.setCodigo(numBoleto);
-		controleJSF = new ControllerJSF();
-		Resultado rs = controleJSF.processRequest(this.getClass().getName(), boleto);		
+		transacao = new Transacao();
+		
+		Fachada fachada = new Fachada<>();		
+		fachada.pagar(transacao, numBoleto);		
 		return "FormTransacao";
 	}
 
-	public ControllerJSF getControleJSF() {
+	/*public ControllerJSF getControleJSF() {
 		return controleJSF;
 	}
 
@@ -42,7 +45,7 @@ public class PagarEntidadeBoletoBean {
 
 	public void setBoleto(Boleto boleto) {
 		this.boleto = boleto;
-	}
+	}*/
 
 	public String getNumBoleto() {
 		return numBoleto;
