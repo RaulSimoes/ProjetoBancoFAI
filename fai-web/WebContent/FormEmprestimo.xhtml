@@ -10,14 +10,15 @@
 	<ui:define name="conteudo">
 		<ul>
 			<!--Início Conteúdo-->
-			<h3>Banco - Menu do Usuário</h3>
-			<h:form action="SalvarUsuario" method="post">
-				<h:panelGrid columns="1">
-					<h:commandButton action="FormSalvarUsuario" value="Cadastro Usuário"/>
-					<h:commandButton action="FormTransacao" value="Transação"/>
-					<h:commandButton action="FormEmprestimo"value="Empréstimos"/>
-					<h:commandButton action="FormPagamento"value="Pagamentos"/>
-					<h:commandButton action="FormLogin" value="Voltar"/>
+			<h3>Banco - Fazer Empréstimo</h3>
+			<h:form >
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Valor do Empréstimo:" />
+					<h:inputText value="#{salvarEntidadeUsuarioBean.nome}" />
+					
+					<h:panelGrid columns="2">
+						<h:commandButton action="#{salvarEntidadeUsuarioBean.salvarUsuario}" value="Solicitar" />
+					</h:panelGrid>
 				</h:panelGrid>
 			</h:form>
 			<!--Fim Conteúdo-->
