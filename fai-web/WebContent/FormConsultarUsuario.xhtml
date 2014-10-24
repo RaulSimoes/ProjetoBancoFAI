@@ -14,10 +14,9 @@
 			<h:form>
 				<h:panelGrid>
 				<p:growl id="msgs" showDetail="true" />
+				
 					<p:dataTable id="eventsDT" var="usuario" value="#{consultarEntidadeUsuarioBean.listaDeUsuario}" 
-						selectionMode="single" 
-						selection="#{dtSelectionView.listaDeUsuario}"
-						rowKey="#{usuario.nome}">
+						selectionMode="single" selection="#{dtSelectionView.listaDeUsuario}" rowKey="#{usuario.id}" >
 						
 						<f:facet name="header">
             				Usuários do Banco
