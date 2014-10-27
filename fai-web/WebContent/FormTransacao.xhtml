@@ -13,8 +13,12 @@
 			<!--Início Conteúdo-->
 			<h:form>
 				<h:panelGrid>				
-					<h:outputLabel value="Número do boleto:" required="true"></h:outputLabel>
-					<h:inputText value="#{pagarEntidadeBoletoBean.numBoleto}"></h:inputText>			
+					<h:outputLabel value="Código do boleto:" for="campo-codigo"/>
+					<h:inputText id="campo-codigo" value="#{pagarEntidadeBoletoBean.numBoleto}" required="true">
+						<f:validateRegex pattern="[0-9]{1,10}"/>											
+					</h:inputText>
+					<h:message for="campo-codigo"/>																			
+								
 					<h:commandButton action="#{pagarEntidadeBoletoBean.pagar}" value="Pagar" />					
 					<br></br>
 					<h:outputText value="#{pagarEntidadeBoletoBean.feedBackPagarBoleto}" />									

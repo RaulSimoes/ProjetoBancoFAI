@@ -5,21 +5,39 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
+<h:head>
+<title>Página Inicial</title>
+</h:head>	
+<h:body>
+<h3>Banco - Login</h3>	
+<h:form>
 <ui:composition template="Template.xhtml">
 	<ui:define name="conteudo">
-		<h3>Banco - Login</h3>	
 		<ul>
 			<!--Início Conteúdo-->
 			<h:form>
 				<h:panelGrid>
-					<h:outputLabel value="Agência" required="true"></h:outputLabel>
-					<h:inputText value="#{logarEntidadeContaBean.agencia}"></h:inputText>
-					<h:outputLabel value="Conta:" required="true"></h:outputLabel>
-					<h:inputText value="#{logarEntidadeContaBean.num_conta}"></h:inputText>
-					<h:outputLabel value="Senha:" required="true"></h:outputLabel>
-					<h:inputSecret value="#{logarEntidadeContaBean.senha}"></h:inputSecret>
-					<h:commandButton action="#{logarEntidadeContaBean.logar}" value="Logar" />
+				
+					<h:outputLabel value="Agência " for="campo-agencia"/>				
+					<h:inputText id="campo-agencia" value="#{logarEntidadeContaBean.agencia}" required="true">
+						<f:validateRegex pattern="[0-9]{6,20}"/>
+					</h:inputText>		
+					<h:message for="campo-agencia"/>									
+										
+					<h:outputLabel value="Conta:" for="campo-conta"/>
+					<h:inputText id="campo-conta" value="#{logarEntidadeContaBean.num_conta}" required="true">
+						<f:validateRegex pattern="[0-9]{6,10}"/>						
+					</h:inputText>
+					<h:message for="campo-conta"/>					
+					
+					<h:outputLabel value="Senha:" for="campo-conta"/>
+					<h:inputSecret id="campo-senha" value="#{logarEntidadeContaBean.senha}" required="true">
+						<f:validateRegex pattern="[0-9]{6,10}"/>					
+					</h:inputSecret>
+					<h:message for="campo-senha"/>
+					
+			
+					<h:commandButton action="#{logarEntidadeContaBean.logar}" value="Logar" />					
 					<br></br>
 					<h:outputText value="#{logarEntidadeContaBean.erroLogin}" />					
 				</h:panelGrid>
@@ -27,5 +45,9 @@
 			<!--Fim Conteúdo-->
 		</ul>
 	</ui:define>
+	<h:messages></h:messages>
 </ui:composition>
+<h:messages></h:messages>
+</h:form>
+</h:body>
 </html>

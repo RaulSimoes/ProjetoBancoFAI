@@ -10,5 +10,10 @@
     <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 </application>
 
+	<application>
+		<message-bundle>
+			fai.controller.resources.Messages
+		</message-bundle>
+	</application>
 
 </faces-config>

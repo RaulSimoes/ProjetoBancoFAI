@@ -34,5 +34,4 @@ public class VerificadorSaldoConta implements ICommand{
 	public void setFachada(IFachada fachada) {
 		this.fachada = fachada;
 	}
-
 }
