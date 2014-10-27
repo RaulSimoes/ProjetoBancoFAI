@@ -12,11 +12,12 @@
 		<ul>
 			<!--Início Conteúdo-->
 			<h:form>
-				<h:panelGrid>
+				<h:panelGrid>				
 					<h:outputLabel value="Número do boleto:" required="true"></h:outputLabel>
 					<h:inputText value="#{pagarEntidadeBoletoBean.numBoleto}"></h:inputText>			
 					<h:commandButton action="#{pagarEntidadeBoletoBean.pagar}" value="Pagar" />					
-					<br></br>				
+					<br></br>
+					<h:outputText value="#{pagarEntidadeBoletoBean.feedBackPagarBoleto}" />									
 				</h:panelGrid>
 			</h:form>
 			<!--Fim Conteúdo-->

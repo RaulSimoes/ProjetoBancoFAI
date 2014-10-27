@@ -22,7 +22,7 @@ public class ValidadorBoleto<E extends EntidadeDominio> implements ICommand{
 			    boleto = (Boleto)rs.getEntidades().get(0); 			    
 				if (boleto.getPago() ){
 					List<Mensagem> lista = new ArrayList<Mensagem>();
-					lista.add(new Mensagem("Este boleto já foi pago"));
+					lista.add(new Mensagem("Não é posssível pagar novamente. Boleto já havia sido pago."));
 					rs.setMensagens(lista);				
 				}else{
 					rs.getEntidades().add(boleto);					

@@ -1,11 +1,12 @@
 package fai.dao.jpa.impl;
 
 import java.util.List;
-
 import javax.persistence.Query;
-
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import fai.domain.Conta;
 
+@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 public class ContaJpaDAO <C extends Conta> extends AbstractJpaDAO<C> {
 	@Override
 	public List<C> consultar(C entidade) {
@@ -49,8 +50,6 @@ public class ContaJpaDAO <C extends Conta> extends AbstractJpaDAO<C> {
 		Query con= em.createQuery(
 			      "UPDATE Conta c SET c.saldo = "+ Float.toString(c.getSaldo()) + 
 			      " WHERE c.id = :idConta");
-		//int updateCount = query.setParameter(p, 100000).executeUpdate();		
-		//con.setParameter("saldoConta", c.getSaldo());	
 		con.setParameter("idConta", c.getId()).executeUpdate();	
 	}			
 }

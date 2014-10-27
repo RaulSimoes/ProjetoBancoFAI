@@ -4,8 +4,13 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import fai.domain.Boleto;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import fai.domain.Boleto;
+import fai.domain.Conta;
+
+@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 public class BoletoJpaDAO <B extends Boleto> extends AbstractJpaDAO<B> {
 	@Override
 	public List<B> consultar(B entidade) {
@@ -17,4 +22,15 @@ public class BoletoJpaDAO <B extends Boleto> extends AbstractJpaDAO<B> {
 		boletos= con.getResultList();
 		return boletos;		
 	}
+	
+	@Override
+	public void alterar(B entidade) {
+		Boleto b = (Boleto) entidade;
+		Query con= em.createQuery(
+			      "UPDATE Boleto b SET b.pago = "+ Boolean.toString(b.getPago()) + 
+			      " WHERE b.id = :idBoleto");
+		//int updateCount = query.setParameter(p, 100000).executeUpdate();		
+		//con.setParameter("saldoConta", c.getSaldo());	
+		con.setParameter("idBoleto", b.getId()).executeUpdate();	
+	}	
 }

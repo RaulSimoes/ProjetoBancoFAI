@@ -123,10 +123,10 @@ public class Fachada<F extends EntidadeDominio> implements IFachada<F> {
 				r = (Resultado<F>) cmd.execute(conta, boleto);				
 				break;
 			case 2:
-				r = (Resultado<F>) cmd.execute(conta, boleto);				
+				cmd.execute(conta, boleto);				
 				break;
 			case 3:
-				cmd.execute(boleto, boleto);				
+				r = (Resultado<F>) cmd.execute(boleto, boleto);				
 				break;				
 			default:
 				break;
@@ -138,16 +138,7 @@ public class Fachada<F extends EntidadeDominio> implements IFachada<F> {
 				}					
 			}		
 		}
-
-		/*if(r.getMensagens().size() == 0){
-			IDAO dao = daos.get(entidade.getClass().getName());			
-			dao.salvar(entidade);
-			return null;
-		}else{			
-			return r;
-		}*/
-		return r;		
-			
+		return r;					
 	}
 
 

@@ -19,7 +19,7 @@ public class VerificadorSaldoConta implements ICommand{
 		Conta c = (Conta) rs.getEntidades().get(0);		
 		Boleto boleto = (Boleto) obj;
 		
-		if (!((c.getSaldo() >= boleto.getValor()) && 
+		if (!((c.getSaldo() >= boleto.getValor()) || 
 			  ((c.getSaldo()+c.getLimite_credito() ) >= boleto.getValor()))
 			){
 			List<Mensagem> lista = new ArrayList<Mensagem>();
