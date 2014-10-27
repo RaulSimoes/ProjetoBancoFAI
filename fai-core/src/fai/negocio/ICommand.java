@@ -2,11 +2,12 @@
 package fai.negocio;
 
 import fai.domain.EntidadeDominio;
+import fai.domain.Resultado;
 
 
 
 public interface ICommand {
 
-	public String execute(EntidadeDominio entidade);	
+	public Resultado<EntidadeDominio> execute(EntidadeDominio entidade, Object obj);	
 	
 }

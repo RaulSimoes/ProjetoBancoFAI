@@ -29,7 +29,7 @@ public class ConsultarEntidadeUsuarioBean{
 				
 		usuario = new Usuario();
 		controleJSF = new ControllerJSF();
-		Resultado rs = controleJSF.processRequest(this.getClass().getName(), usuario);
+		Resultado rs = controleJSF.processRequest(this.getClass().getName(), usuario,"");
 		
 		//Usuario usuario = (Usuario) rs.getEntidades().get(0);
 		listaDeUsuario = (List<Usuario>) rs.getEntidades(); //carrega para dentro da lista
@@ -46,7 +46,7 @@ public class ConsultarEntidadeUsuarioBean{
 	
 	public Resultado consultar(EntidadeDominio entidade) throws ServletException, IOException{
 		controleJSF = new ControllerJSF();
-		return controleJSF.processRequest(this.getClass().getName(), entidade);						
+		return controleJSF.processRequest(this.getClass().getName(), entidade,"");						
 	}
 
 	public Usuario getUsuario() {

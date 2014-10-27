@@ -72,7 +72,7 @@ public class ServletFai extends HttpServlet {
 
 		ICommandFrontController<EntidadeDominio> cfc = getCommand(command);
 		
-		resultado = cfc.execute(entidade);
+		resultado = cfc.execute(entidade, "");
 		
 		vh.setView(resultado, request,response);
 		/*

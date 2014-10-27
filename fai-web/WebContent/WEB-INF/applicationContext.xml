@@ -22,6 +22,8 @@
 				<entry key="fai.domain.Boleto" value-ref="boletoJpaDAO"/>				
 			</map>
 		</property>
+		
+		<property name="rns" ref="rns"/> <!-- injetando o mapa de commands de regras de negócio -->		
 	</bean>
 
 	<util:map id="commandsFC" map-class="java.util.HashMap"
@@ -32,27 +34,6 @@
 		<entry key="commandFrontControllerConsultar" value-ref="commandFrontControllerConsultar" />
 		<entry key="commandFrontControllerPagar" value-ref="commandFrontControllerPagar" />				
 	</util:map>
-	
-	<!--nao utilizado-->
-	<util:map id="vhs" map-class="java.util.HashMap"
-		key-type="java.lang.String" value-type="fai.controle.web.command.ICommandFrontController">
-
-		<entry key="/fai-web/SalvarUsuario" value-ref="salvarUsuarioVHWeb" /><!--usuario-->
-		<entry key="/fai-web/LogarConta" value-ref="logarContaVHWeb" /><!--logar-->		
-
-	</util:map>
-
-	<!--usuario-->
-	<bean id="salvarUsuarioVHWeb"
-		class="fai.controle.web.vh.SalvarUsuarioVHWeb">
-		<property name="usuario" ref="usuario"/>
-	</bean>
-	
-	<!--logar-->
-	<bean id="logarContaVHWeb"
-		class="fai.controle.web.vh.LogarContaVHWeb">
-		<property name="conta" ref="conta"/>
-	</bean>	
 	
 	<bean id="usuario" class="fai.domain.Usuario"/><!--usuario-->
 	<bean id="conta" class="fai.domain.Conta"/><!--conta-->	
@@ -77,11 +58,6 @@
 		<property name="fachada" ref="fachada" />
 	</bean>			
 	
-	<bean id="factoryMethodVH"
-		class="fai.controle.web.vh.FactoryMethodVH">
-		<property name="vhs" ref="vhs" />
-	</bean>
-
 	<!-- arquivo properties -->
 	<context:property-placeholder location="classpath:fai/resources/jdbc.properties" />
 	<!-- Config. datasource -->
@@ -125,9 +101,46 @@
 		<property name="emf" ref="entityManagerFactory" />
 	</bean>			
 
+
+	<bean id="debitadorConta" class="fai.negocio.impl.DebitadorConta">
+		<property name="fachada" ref="fachada" />		
+	</bean> 
+	
+	<bean id="pagadorBoleto" class="fai.negocio.impl.PagadorBoleto">
+		<property name="fachada" ref="fachada" />		
+	</bean> 	
+	
+	<bean id="validadorBoleto" class="fai.negocio.impl.ValidadorBoleto">
+		<property name="fachada" ref="fachada" />		
+	</bean> 
+	
+	<bean id="verificadorSaldoConta" class="fai.negocio.impl.VerificadorSaldoConta">
+		<property name="fachada" ref="fachada" />		
+	</bean> 	
+
+<!-- Lista de commands a ser executado para a entidade transacao -->
+	<util:list id="rnsBoleto" list-class="java.util.ArrayList">
+		<ref bean="validadorBoleto"/>
+		<ref bean="verificadorSaldoConta"/>			
+		<ref bean="debitadorConta"/>
+		<ref bean="pagadorBoleto"/>
+	</util:list>
+
+		
+	<!-- Mapa de Lista de commands que tem como chave o nome da entidade -->
+	<util:map id="rns" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.util.List">
+		<entry key="fai.domain.Boleto" value-ref="rnsBoleto" />
+	</util:map>  
+
+<!-- Definição de um list inicial que tem como tipo a classe Resultado
+	<util:list id="msgs" list-class="java.util.ArrayList" value-type="fai.domain.Resultado"/>	 -->
+
+
+
 <!--  entity manager factory  -->
   <bean id="entityManagerFactory" 
-      class='org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean'>
+      class='org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean' scope="singleton">    
     <property name='dataSource' ref='dataSource' />
     <property name="jpaPropertyMap">
         <map>

@@ -36,7 +36,7 @@ public class LogarEntidadeContaBean{
 		conta.setSenha(senha);
 		
 		controleJSF = new ControllerJSF();
-		Resultado rs = controleJSF.processRequest(this.getClass().getName(), conta);		
+		Resultado rs = controleJSF.processRequest(this.getClass().getName(), conta,"");		
 
 		if(rs.getEntidades().size() > 0){
 			ConsultarEntidadeUsuarioBean consultaUsuario = new ConsultarEntidadeUsuarioBean();

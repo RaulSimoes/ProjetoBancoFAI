@@ -83,7 +83,7 @@ public class SalvarBean{
 		usuario.setTipo_cliente(tipo_cliente);
 		
 		controleJSF = new ControllerJSF();
-		controleJSF.processRequest(this.getClass().getName(), usuario);
+		controleJSF.processRequest(this.getClass().getName(), usuario,"");
 		
 		return (String)"FormMenuUsuario";
 	}

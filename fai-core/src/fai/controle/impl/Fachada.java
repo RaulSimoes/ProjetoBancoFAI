@@ -1,24 +1,55 @@
 
 package fai.controle.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import fai.core.controle.IFachada;
 import fai.dao.IDAO;
+import fai.dao.jpa.impl.BoletoJpaDAO;
+import fai.dao.jpa.impl.ContaJpaDAO;
 import fai.dao.jpa.impl.UsuarioJpaDAO;
+import fai.domain.Boleto;
+import fai.domain.Conta;
 import fai.domain.EntidadeDominio;
-import fai.domain.Mensagem;
 import fai.domain.Resultado;
 import fai.domain.Usuario;
 import fai.negocio.ICommand;
+import fai.negocio.impl.DebitadorConta;
+import fai.negocio.impl.PagadorBoleto;
+import fai.negocio.impl.ValidadorBoleto;
+import fai.negocio.impl.VerificadorSaldoConta;
 
 
-
+//@Repository("fachada")
 public class Fachada<F extends EntidadeDominio> implements IFachada<F> {
 	private Map<String, IDAO> daos;
-	private Map<String, List<ICommand>> rns;		
-	private UsuarioJpaDAO<Usuario> usuarioJpaDAO;
+	private Map<String, List<ICommand>> rns;	
+	private Boleto boleto;
+	
+	public Fachada() {
+		/*
+		//Commands de negócio 
+		rns = new HashMap<String, List<ICommand>>();
+		
+		List<ICommand> rnsTransacaoPagarBoleto = new ArrayList<ICommand>();
+		rnsTransacaoPagarBoleto.add( new ValidadorBoleto());
+		rnsTransacaoPagarBoleto.add( new VerificadorSaldoConta());		
+		rnsTransacaoPagarBoleto.add( new DebitadorConta());
+		rnsTransacaoPagarBoleto.add( new PagadorBoleto());
+		rns.put("fai.domain.Boleto", rnsTransacaoPagarBoleto);
+		
+		//
+		daos = new HashMap<String, IDAO>();
+		daos.put("fai.domain.Usuario", new UsuarioJpaDAO<Usuario>());
+		daos.put("fai.domain.Conta", new ContaJpaDAO<Conta>());
+		daos.put("fai.domain.Boleto", new BoletoJpaDAO<Boleto>());*/						
+	}
 	
 	@Override
 	public Resultado<F> salvar(F entidade) {
@@ -60,27 +91,77 @@ public class Fachada<F extends EntidadeDominio> implements IFachada<F> {
 
 	
 	
-	public Resultado<F> pagar(F entidade, String numBoleto){
-	    //TransacaoJpaDAO dao = (TransacaoJpaDAO) daos.get(entidade.getClass().getName());
-        Resultado<F> r = null;
-        
+	public Map<String, List<ICommand>> getRns() {						
+		return rns;
+	}
+
+
+	public void setRns(Map<String, List<ICommand>> rns) {
+		this.rns = rns;
+	}
+	
+	public Resultado<F> pagar(F entidade, String numBoleto, Conta conta){
+		ICommand cmd;		
+        Resultado<F> r = null; 
+        EntidadeDominio ent;
+        ent = entidade;
 		String nmClasse = entidade.getClass().getName();
 		List<ICommand> cmds = rns.get(nmClasse);
-				
-		for(ICommand cmd : cmds){					
-			String msg = cmd.execute(entidade);
-			if(msg != null)
-				r.getMensagens().add(new Mensagem(msg));
-				//msgs.add(new Mensagem(msg));
-		}		
-		if(r.getMensagens().size() == 0){
-			IDAO dao = daos.get(nmClasse);			
+		
+		boleto = new Boleto();
+		boleto.setCodigo(numBoleto);		
+		
+		for (int i = 0; i < cmds.size(); i++) {
+			cmd = cmds.get(i);			
+			switch (i) {
+			case 0:				
+				r = (Resultado<F>) cmd.execute(boleto, "");
+				if (r.getEntidades().size()>0)
+					boleto = (Boleto) r.getEntidades().get(0);
+				break;
+			case 1:
+				r = (Resultado<F>) cmd.execute(conta, boleto);				
+				break;
+			case 2:
+				r = (Resultado<F>) cmd.execute(conta, boleto);				
+				break;
+			case 3:
+				cmd.execute(boleto, boleto);				
+				break;				
+			default:
+				break;
+			}
+			
+			if (r.getMensagens()!= null){
+				if(r.getMensagens().size() != 0){
+					break;				//ocorreu algum problema que 
+				}					
+			}		
+		}
+
+		/*if(r.getMensagens().size() == 0){
+			IDAO dao = daos.get(entidade.getClass().getName());			
 			dao.salvar(entidade);
 			return null;
 		}else{			
 			return r;
-		}	
+		}*/
+		return r;		
+			
 	}
+
+
+	public Boleto getBoleto() {
+		return boleto;
+	}
+
+
+	public void setBoleto(Boleto boleto) {
+		this.boleto = boleto;
+	}
+
+
+
 	
 	
 }

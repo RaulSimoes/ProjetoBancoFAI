@@ -1,20 +1,29 @@
 package fai.dao.jpa.impl;
 
+
+import javax.persistence.Cache;
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnitUtil;
+import javax.persistence.Query;
+import javax.persistence.SynchronizationType;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.metamodel.Metamodel;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import fai.dao.IDAO;
+import fai.domain.Conta;
 import fai.domain.EntidadeDominio;
 
 
 public abstract class AbstractJpaDAO<E extends EntidadeDominio> implements IDAO<E> {
 	protected EntityManagerFactory emf;
 	@PersistenceContext 
-	protected EntityManager em;	
-	
+	protected EntityManager em;
+	protected EntidadeDominio entidadeDominio;		
 	
 	//@Transactional para o spring
 	@Transactional
@@ -28,9 +37,10 @@ public abstract class AbstractJpaDAO<E extends EntidadeDominio> implements IDAO<
 	}	
 	@Override
 	public void alterar(E entidade) {
-		em.getTransaction().begin();		
-		em.refresh(entidade);			
-		em.getTransaction().commit();	
+		em.refresh(entidade);
+		//em.getTransaction().commit();	
+		//entidadeDominio = em.merge(entidade);
+		//em.refresh(entidadeDominio);
 	}
 	@Override
 	public void excluir(E entidade) {

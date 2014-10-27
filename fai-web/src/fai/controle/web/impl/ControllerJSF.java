@@ -24,7 +24,7 @@ public class ControllerJSF {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
 	
-	public Resultado processRequest(String comando, EntidadeDominio entidadeDominio)
+	public Resultado processRequest(String comando, EntidadeDominio entidadeDominio, String aux)
 			throws ServletException, IOException {
 		Resultado<EntidadeDominio> resultado;		
 		//comando = "fai.controle.web.vh." + "LogarEntidadeContaBean";
@@ -37,7 +37,7 @@ public class ControllerJSF {
 		EntidadeDominio entidade = entidadeDominio;
 		ICommandFrontController<EntidadeDominio> cfc = getCommand(array[0]);				
 		
-		resultado = cfc.execute(entidade);	
+		resultado = cfc.execute(entidade, aux);	
 		return resultado;
 	}	
 	

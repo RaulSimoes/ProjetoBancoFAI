@@ -13,7 +13,7 @@ public class CommandFrontControllerLogar<E> implements ICommandFrontController<E
 	private IFachada fachada;
 	
 	@Override
-	public Resultado<EntidadeDominio> execute(EntidadeDominio entidade) {
+	public Resultado<EntidadeDominio> execute(EntidadeDominio entidade, String aux) {
 		return fachada.consultar(entidade);		
 	}	
 	

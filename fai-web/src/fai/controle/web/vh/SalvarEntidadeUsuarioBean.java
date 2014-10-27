@@ -133,7 +133,7 @@ public class SalvarEntidadeUsuarioBean{
 		usuario.setTipo_cliente(tipo_cliente);
 		
 		controleJSF = new ControllerJSF();
-		controleJSF.processRequest(this.getClass().getName(), usuario);
+		controleJSF.processRequest(this.getClass().getName(), usuario, "");
 		
 		conta = new Conta();
 		conta.setUsuario(usuario);
@@ -143,7 +143,7 @@ public class SalvarEntidadeUsuarioBean{
 		conta.setNum_conta(num_conta);
 		conta.setAgencia(agencia);
 		
-		controleJSF.processRequest(this.getClass().getName(), conta);
+		controleJSF.processRequest(this.getClass().getName(), conta, "");
 		
 		return (String) "FormMenuUsuario";
 	}
