@@ -2,6 +2,7 @@
 package fai.controle.impl;
 
 import java.util.ArrayList;
+import fai.dao.jpa.impl.UsuarioJpaDAO;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +32,7 @@ public class Fachada<F extends EntidadeDominio> implements IFachada<F> {
 	private Map<String, IDAO> daos;
 	private Map<String, List<ICommand>> rns;	
 	private Boleto boleto;
+	private UsuarioJpaDAO<Usuario> usuarioJpaDAO;	
 	
 	public Fachada() {
 		/*

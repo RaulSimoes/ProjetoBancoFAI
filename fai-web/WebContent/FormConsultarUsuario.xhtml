@@ -16,7 +16,7 @@
 				<p:growl id="msgs" showDetail="true" />
 				
 					<p:dataTable id="eventsDT" var="usuario" value="#{consultarEntidadeUsuarioBean.listaDeUsuario}" 
-						selectionMode="single" selection="#{dtSelectionView.listaDeUsuario}" rowKey="#{usuario.id}" >
+						selectionMode="single" selection="#{dtSelectionView.listaDeUsuario}" rowKey="#{usuario.nome}" >
 						
 						<f:facet name="header">
             				Usuários do Banco

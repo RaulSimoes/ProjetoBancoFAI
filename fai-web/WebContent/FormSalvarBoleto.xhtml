@@ -12,11 +12,18 @@
 		<ul>
 			<!--Início Conteúdo-->
 			<h:form action="SalvarBoleto" method="post">
-				<h:panelGrid>
-					<h:outputLabel value="Código do boleto:" />
-					<h:inputText value="#{salvarEntidadeBoletoBean.codigo}" />
-					<h:outputLabel value="Valor:" />
-					<h:inputText value="#{salvarEntidadeBoletoBean.valor}" />
+				<h:panelGrid>		
+					<h:outputLabel value="Código do boleto:" for="campo-codigo"/>
+					<h:inputText id="campo-codigo" value="#{salvarEntidadeBoletoBean.codigo}" required="true">
+						<f:validateRegex pattern="[0-9]{1,10}"/>											
+					</h:inputText>
+					<h:message for="campo-codigo"/>						
+					
+					<h:outputLabel value="Valor: R$ " for="campo-valor"/>
+					<h:inputText id="campo-valor" value="#{salvarEntidadeBoletoBean.valor}" required="true">
+					<f:convertNumber locale="pt_BR"/>
+					</h:inputText>
+					<h:message for="campo-valor" />					
 					
 					<br></br>
 					<h:commandButton action="#{salvarEntidadeBoletoBean.salvarBoleto}" value="Salvar" />

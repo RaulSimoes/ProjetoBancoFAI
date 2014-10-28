@@ -27,7 +27,7 @@ public class SalvarEntidadeBoletoBean {
 		controleJSF = new ControllerJSF();
 		controleJSF.processRequest(this.getClass().getName(), boleto, "");
 		
-		return (String) "FormConsultarUsuario";
+		return (String) "FormMenuUsuario";
 	}	
 	
 	//get and set
